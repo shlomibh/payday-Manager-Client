@@ -10,7 +10,7 @@ import { User } from './models/User';
 })
 export class AppComponent {
   title = 'paydayManager';
-  currentUser: User;
+  currentUser: User = null;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
