@@ -1,0 +1,20 @@
+.container {
+  min-width: 99vw;
+  min-height: 100vh;
+  border: 1px black solid;
+}
+
+.btn--plus {
+  width: 5%;
+}
+.btn--plus:hover {
+  transform: scale(1.1);
+}
+
+app-modal-date-picker {
+  max-width: 40%;
+}
+
+.timeContainer {
+    width: 10%;
+}
