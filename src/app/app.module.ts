@@ -11,6 +11,7 @@ import { ReportFillComponent } from './components/report-fill/report-fill.compon
 import { HistoryComponent } from './components/history/history.component';
 import { ModalDatePickerComponent } from './components/modal-date-picker/modal-date-picker.component';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TimePickerComponent } from './components/time-picker/time-picker.compon
     TimePickerComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

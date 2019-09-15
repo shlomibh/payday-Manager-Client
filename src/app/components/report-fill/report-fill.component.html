@@ -1,43 +1,57 @@
 <div class="container">
   <h1>Fill yours hours</h1>
-  <div class="table-responsive">
-    <div class="bs-example" data-example-id="striped-table">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td><div class="timeContainer">
-              <app-modal-date-picker></app-modal-date-picker></div></td>
-            <td><app-time-picker></app-time-picker></td>
-            <td><app-time-picker></app-time-picker></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+  <form [formGroup]="hourReportForm">
+    <div class="table-responsive">
+      <div class="bs-example" data-example-id="striped-table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let report of hourReportForm.get('reports').controls;
+                let i = index
+              "
+              [formGroup]="report"
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                <div class="timeContainer">
+                  <app-modal-date-picker
+                    formControlName="date"
+                    ngDefaultControl
+                  ></app-modal-date-picker>
+                </div>
+              </td>
+              <td>
+                <app-time-picker
+                  formControlName="start"
+                  ngDefaultControl
+                ></app-time-picker>
+              </td>
+              <td>
+                <app-time-picker
+                  formControlName="end"
+                  ngDefaultControl
+                ></app-time-picker>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <img
+        src="assets/plusButton.jpeg"
+        alt="plus button"
+        class="img-circle btn--plus"
+        (click)="addReport()"
+      />
     </div>
-    <img
-      src="assets/plusButton.jpeg"
-      alt="plus button"
-      class="img-circle btn--plus"
-    />
-  </div>
+  </form>
 </div>
