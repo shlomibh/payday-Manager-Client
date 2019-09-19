@@ -1,8 +1,15 @@
 .container {
-  min-width: 99vw;
+  min-width: 80vw;
   min-height: 100vh;
   border: 1px black solid;
+ 
+  
 }
+.th{
+  border:10px;
+}
+tr:nth-child(even) {background-color:WhiteSmoke;}
+
 
 .btn--plus {
   width: 5%;
@@ -12,9 +19,10 @@
 }
 
 app-modal-date-picker {
-  max-width: 40%;
+  max-width: 20%;
 }
 
 .timeContainer {
     width: 10%;
+    
 }
