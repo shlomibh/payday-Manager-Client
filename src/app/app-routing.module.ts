@@ -7,11 +7,13 @@ import { ReportFillComponent } from './components/report-fill/report-fill.compon
 import { HistoryComponent } from './components/history/history.component';
 
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'fillReport', component: ReportFillComponent, canActivate: [AuthGuard] },
   {path: 'history',component: HistoryComponent,canActivate: [AuthGuard] },
+  {path: 'manager', loadChildren: () => import('src/app/manager/manager.module').then(m => m.ManagerModule)},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

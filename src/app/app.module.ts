@@ -13,6 +13,7 @@ import { ModalDatePickerComponent } from './components/modal-date-picker/modal-d
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
 import { CommonModule } from '@angular/common';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { CommonModule } from '@angular/common';
     ReportFillComponent,
     HistoryComponent,
     ModalDatePickerComponent,
-    TimePickerComponent
+    TimePickerComponent,
+    
   ],
   imports: [
     CommonModule,
