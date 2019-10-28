@@ -17,7 +17,6 @@ export class ModalDatePickerComponent {
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          console.log();
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

@@ -21,7 +21,6 @@ export class ReportFillComponent {
   addReport(): void {
     this.reports = this.hourReportForm.get('reports') as FormArray;
     this.reports.push(this.createReport());
-    console.log(this.reports);
   }
 
   createReport(): FormGroup {
@@ -31,6 +30,23 @@ export class ReportFillComponent {
       end: ['', Validators.required],
       comment: ['']
     });
+  }
+
+  getControl(name: string, pos: number) {
+    const arr = this.hourReportForm.get('reports');
+    const control = arr.get([pos]).get(name)
+    console.log(pos);
+    return control ;
+  }
+
+  onSubmit(){
+    const arr = this.hourReportForm.get('reports');
+    console.log(arr);
+    
+
+    
+  
+    
   }
 
 }

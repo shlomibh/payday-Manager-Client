@@ -14,9 +14,9 @@ tr:nth-child(even) {background-color:WhiteSmoke;}
 .btn--plus {
   width: 5%;
 }
-.btn--plus:hover {
+/* .btn--plus:hover {
   transform: scale(1.1);
-}
+} */
 
 app-modal-date-picker {
   max-width: 20%;
@@ -25,4 +25,9 @@ app-modal-date-picker {
 .timeContainer {
     width: 10%;
     
+}
+
+.select-cause{
+
+  width: 100%;
 }

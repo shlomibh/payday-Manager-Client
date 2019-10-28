@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Fill yours hours</h1>
-  <form [formGroup]="hourReportForm">
+  <form [formGroup]="hourReportForm" (ngSubmit)="onSubmit()">
     <div class="table-responsive">
       <div class="bs-example" data-example-id="striped-table">
         <table class="table table-bordered">
@@ -11,8 +11,7 @@
               <th>שעת התחלה</th>
               <th>שעת סיום</th>
               <th>אי נוכחות מהסיבות הבאות</th>
-              <th>תאריך דיווח</th>
-              <th>שלח דיווח</th>
+              <th>מחק דיווח</th>
             </tr>
           </thead>
           <tbody>
@@ -27,14 +26,14 @@
               <td>
                 <div class="timeContainer">
                   <app-modal-date-picker
-                    formControlName="date"
+                    [formControl]="getControl('date',i)"
                     ngDefaultControl
                   ></app-modal-date-picker>
                 </div>
               </td>
               <td>
                 <app-time-picker
-                  formControlName="start"
+                  [formControl]="getControl('start',i)"
                   ngDefaultControl
                 ></app-time-picker>
               </td>
@@ -45,36 +44,35 @@
                 ></app-time-picker>
               </td>
               <td>
-                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                     
-                    
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          בחר סיבה
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <a class="dropdown-item" href="#">Dropdown link</a>
-                          <a class="dropdown-item" href="#">Dropdown link</a>
-                        </div>
-                      </div>
-                    </div>
+                <select class="form-control select-cause">
+                  <option>בחר סיבה</option>
+                  <option value="1">מחלה</option>
+                  <option value="2">חופש</option>
+                  <option value="3">ביטול שיעור</option>
+                </select>
               </td>
               <td>
+                <button type="button" class="btn btn-danger">
+                  מחק
+                </button>
               </td>
-              <td>
-                  <button type="button" class="btn btn-success">אישור דיווח</button>
             </tr>
           </tbody>
         </table>
       </div>
-
-
-      <img
-        src="https://icon-library.net/images/plus-button-icon/plus-button-icon-2.jpg"
-        alt="plus button"
-        class="img-circle btn--plus"
-        (click)="addReport()"
-    >
+      <div class="text-right">
+        <img
+          src="https://icon-library.net/images/plus-button-icon/plus-button-icon-2.jpg"
+          alt="plus button"
+          class="img-circle btn--plus"
+          (click)="addReport()"
+        />
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success">
+        אישור דיווח
+      </button>
     </div>
   </form>
 </div>

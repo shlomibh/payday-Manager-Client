@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+   lecturer = [{name: 'shadi', dep: 'software'},{name: 'shadi', dep: 'software'},{name: 'shadi', dep: 'software'}];
   constructor() { }
 
   ngOnInit() {
