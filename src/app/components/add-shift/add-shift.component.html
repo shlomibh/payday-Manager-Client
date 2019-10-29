@@ -1,0 +1,42 @@
+<mat-card>
+    <form [formGroup]="shiftForm" class="container" (ngSubmit)="onSubmit()">
+        <div>
+            <div>Date</div>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div *ngIf="!checked">
+            <div>Start</div>
+            <mat-form-field>
+                <input matInput name="end" formControlName="start" type="time">
+            </mat-form-field>
+        </div>
+        <div *ngIf="!checked">
+            <div>End</div>
+            <mat-form-field>
+                <input class="col-md-5 end" matInput name="end" formControlName="end" type="time">
+            </mat-form-field>
+        </div>
+        <div>
+            Absent?
+            <mat-checkbox (click)=" checked=! checked "></mat-checkbox>
+            <div>
+                <mat-form-field *ngIf="checked">
+                    <mat-label>בחר סיבה</mat-label>
+                    <mat-select formControlName="absent">
+                        <mat-option value="מחלה">מחלה</mat-option>
+                        <mat-option value="חופש">חופש</mat-option>
+                        <mat-option value="ביטול">ביטול שיעור</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <div>Add Shift</div>
+            <mat-icon (click)="onSubmit()">schedule</mat-icon>
+        </div>
+    </form>
+</mat-card>

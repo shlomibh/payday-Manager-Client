@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,11 @@ import { HistoryComponent } from './components/history/history.component';
 import { ModalDatePickerComponent } from './components/modal-date-picker/modal-date-picker.component';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
 import { CommonModule } from '@angular/common';
+import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
+import { AddShiftComponent } from './components/add-shift/add-shift.component';
+import { AngularMaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShiftComponent } from './components/shift/shift.component';
 
 
 @NgModule({
@@ -23,6 +28,9 @@ import { CommonModule } from '@angular/common';
     HistoryComponent,
     ModalDatePickerComponent,
     TimePickerComponent,
+    SchedulePageComponent,
+    AddShiftComponent,
+    ShiftComponent,
     
   ],
   imports: [
@@ -32,9 +40,13 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }

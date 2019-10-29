@@ -1,0 +1,21 @@
+<mat-card class="container">
+    <div>
+        <div>Date</div>
+        <div>{{shift.date}}</div>
+    </div>
+    <div>
+        <div>Start</div>
+        <div *ngIf='shift.absent === undefined'>{{shift.start}}</div>
+    </div>
+    <div>
+        <div>End</div>
+        <div *ngIf='shift.absent === undefined'>{{shift.end}}</div>
+    </div>
+    <div>
+        <div>Absent</div>
+        <div *ngIf='shift.start === undefined'>{{shift.absent}}</div>
+    </div>
+    <div>
+        <mat-icon>delete</mat-icon>
+    </div>
+</mat-card>

@@ -5,13 +5,14 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ReportFillComponent } from './components/report-fill/report-fill.component';
 import { HistoryComponent } from './components/history/history.component';
+import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'fillReport', component: ReportFillComponent, canActivate: [AuthGuard] },
+  { path: 'schedule', component: SchedulePageComponent, canActivate: [AuthGuard] },
   {path: 'history',component: HistoryComponent,canActivate: [AuthGuard] },
   {path: 'manager', loadChildren: () => import('src/app/manager/manager.module').then(m => m.ManagerModule)},
 
