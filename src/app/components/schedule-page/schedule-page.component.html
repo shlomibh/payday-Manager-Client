@@ -1,3 +1,3 @@
-<app-add-shift></app-add-shift>
+<app-add-shift (addClickedEE)="appShiftList.refresh()"></app-add-shift>
 <br>
-<app-shift *ngFor="let shift of shifts" [shift]="shift"></app-shift>
+<app-shift-list #appShiftList></app-shift-list>

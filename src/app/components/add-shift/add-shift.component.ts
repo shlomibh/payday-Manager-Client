@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftService } from 'src/app/services/shift.service';
@@ -11,6 +11,7 @@ import { AuthenticationService } from 'src/app/services';
 })
 export class AddShiftComponent implements OnInit {
 
+  @Output() addClickedEE = new EventEmitter();
   shiftForm: FormGroup;
 
   checked: boolean = false;
@@ -48,16 +49,20 @@ export class AddShiftComponent implements OnInit {
     return this.shiftForm.get('absent');
   }
 
+  markedChecked(){
+    this.checked = !this.checked 
+  }
+
   createShift(): Shift | boolean {
     const date = this.dateControl.value;
     const userID = this.authService.getCurrentUser().id;
-    if(date === '') return false;
+    if(date === '' || date === null) return false;
     if (this.checked) { //The employee was absent
       const reason = this.absentControl.value;
-      if(reason === '') return false;
+      if(reason === '' || reason === null) return false;
       const shift: Shift = {
         date: date.toLocaleDateString(),
-        id: userID,
+        employeeId: userID,
         absent: reason
       };
       return shift;
@@ -68,7 +73,7 @@ export class AddShiftComponent implements OnInit {
       if (start !== '' && end !== '') {
         const shift: Shift = {
           date: date.toLocaleDateString(),
-          id: userID,
+          employeeId: userID,
           start: start,
           end: end
         };
@@ -85,7 +90,12 @@ export class AddShiftComponent implements OnInit {
     const shift = this.createShift();
     console.log(shift);
     if(shift){
-      this.shiftService.post(shift as Shift);
+      this.shiftService.post(shift as Shift).subscribe(
+        shift => {
+          this.shiftForm.reset();
+          this.addClickedEE.emit(true);
+        }
+      );
     }
     else if(!shift){
       console.log('form invalid');  //need to set pop-up error

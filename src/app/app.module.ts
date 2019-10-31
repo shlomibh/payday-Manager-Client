@@ -17,6 +17,7 @@ import { AddShiftComponent } from './components/add-shift/add-shift.component';
 import { AngularMaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShiftComponent } from './components/shift/shift.component';
+import { ShiftListComponent } from './components/shift-list/shift-list.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ShiftComponent } from './components/shift/shift.component';
     SchedulePageComponent,
     AddShiftComponent,
     ShiftComponent,
+    ShiftListComponent,
     
   ],
   imports: [

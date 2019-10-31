@@ -15,12 +15,24 @@ export class ShiftService {
     private auth: AuthenticationService
   ) { }
 
-  post(shift: Shift): Observable<Shift> {
-    return this.http.post(`/api/shifts`, {shift})
-    .pipe(map(
-      (data: Shift) => {
+  get(id: String): Observable<Shift[]> {
+    return this.http.get(`/api/shifts/${id}`)
+      .pipe(map((data: Shift[]) => {
         return data;
-      }
-    ));
+      }));
   }
+
+  post(shift: Shift): Observable<Shift> {
+    return this.http.post(`/api/shifts/${shift.employeeId}`, { shift })
+      .pipe(map(
+        (data: Shift) => {
+          return data;
+        }
+      ));
+  }
+
+  delete(shiftId: String) {
+    return this.http.delete(`/api/shifts/${shiftId}`);
+  }
+
 }

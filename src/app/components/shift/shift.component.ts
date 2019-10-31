@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Shift } from 'src/app/models/shift.model';
 
 @Component({
@@ -9,10 +9,15 @@ import { Shift } from 'src/app/models/shift.model';
 export class ShiftComponent implements OnInit {
 
   @Input() shift: Shift;
-
+  @Output() deleteEE = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  delete(){
+    console.log(this.shift._id);
+    this.deleteEE.emit(this.shift._id);
   }
 
 }

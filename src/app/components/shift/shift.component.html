@@ -16,6 +16,6 @@
         <div *ngIf='shift.start === undefined'>{{shift.absent}}</div>
     </div>
     <div>
-        <mat-icon>delete</mat-icon>
+        <mat-icon (click)="delete()">delete</mat-icon>
     </div>
 </mat-card>
