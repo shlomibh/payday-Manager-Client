@@ -1,1 +1,16 @@
 <app-shift *ngFor="let shift of shifts" [shift]="shift" (deleteEE)="deleteShift($event)"></app-shift>
+<div>
+    סהכ שעות: {{duration[0]}}:{{duration[1]}}
+</div>
+<div>
+    סהכ שעות נוספות: {{extraHours[0]}}:{{extraHours[1]}}
+</div>
+<div>
+    סהכ מחלה: {{sickCounter}}
+</div>
+<div>
+    סהכ חופש: {{dayoffCounter}}
+</div>
+<div>
+    סהכ ביטולים: {{canceledCounter}}
+</div>

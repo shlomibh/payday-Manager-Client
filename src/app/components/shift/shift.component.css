@@ -1,5 +1,52 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.headline {
+  color: white;
+  background-color: #3399ff;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-style: outset;
+  border-width: 3px;
+  padding: 3px;
+}
+.end {
+  color: white;
+  background-color: #3399ff;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-style: outset;
+  border-width: 3px;
+  padding: 3px;
+}
+.date {
+  color: white;
+  background-color: #2eb82e;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-style: outset;
+  border-width: 3px;
+  padding: 3px;
+}
+.absent {
+  color: white;
+  background-color: #ff751a;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-style: outset;
+  border-width: 3px;
+  padding: 3px;
+}
+.del{
+    color: white;
+  background-color: #e60000;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-style: outset;
+  border-width: 1px;
+  padding: 1px;
+  width: 10%;
+  height: 40px;
+}
+
+.del:hover{
+    cursor: pointer;
 }

@@ -17,6 +17,20 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+  .fill{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+  }
+  .view{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .personal{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
   
   
   /* Featurettes
@@ -87,3 +101,9 @@
    width: 70%;
    cursor: pointer;
   }
+  .img-circle{
+    width: 200px;
+    height: 70%;
+    
+  }
+  

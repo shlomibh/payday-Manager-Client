@@ -50,7 +50,28 @@ export class AddShiftComponent implements OnInit {
   }
 
   markedChecked(){
-    this.checked = !this.checked 
+    if(this.shiftForm.get('absent').value === "מחלה" || this.shiftForm.get('absent').value === "חופש")
+      this.checked = true;
+    else
+      this.checked = false;
+  }
+
+  checkHours(): boolean{
+    const start = this.startControl.value;
+    const end = this.endControl.value;
+    const startTime = start.split(':');
+    const endTime = end.split(':');
+    if(+startTime[0] > +endTime[0]){
+      return false;
+    }
+      
+    else if(+startTime[1] > +endTime[1]){
+        return false;
+      }
+    else if(startTime[0] === endTime[0] && +startTime[1] === +endTime[1]){
+      return false; 
+    }
+    return true;
   }
 
   createShift(): Shift | boolean {
@@ -58,6 +79,7 @@ export class AddShiftComponent implements OnInit {
     const userID = this.authService.getCurrentUser().id;
     if(date === '' || date === null) return false;
     if (this.checked) { //The employee was absent
+      console.log('absent');
       const reason = this.absentControl.value;
       if(reason === '' || reason === null) return false;
       const shift: Shift = {
@@ -68,6 +90,10 @@ export class AddShiftComponent implements OnInit {
       return shift;
     }
     else {
+      const timeValidation = this.checkHours()
+      console.log('time validation');
+      console.log(timeValidation); 
+      if(timeValidation){
       const start = this.startControl.value;
       const end = this.endControl.value;
       if (start !== '' && end !== '') {
@@ -79,11 +105,12 @@ export class AddShiftComponent implements OnInit {
         };
         return shift;
       }
-      else{
-        return false;
-      }
     }
-
+    else{
+      return false;
+    }
+    }
+    return false;
   }
 
   onSubmit() {
@@ -97,7 +124,7 @@ export class AddShiftComponent implements OnInit {
         }
       );
     }
-    else if(!shift){
+    else{
       console.log('form invalid');  //need to set pop-up error
     }
 

@@ -1,7 +1,7 @@
 <mat-card>
     <form [formGroup]="shiftForm" class="container" (ngSubmit)="onSubmit()">
         <div>
-            <div>תאריך</div>
+            <div class="choosedate">בחר תאריך</div>
             <mat-form-field>
                 <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -9,33 +9,33 @@
             </mat-form-field>
         </div>
         <div *ngIf="!checked">
-            <div>התחלה</div>
+            <div class="start">שעת התחלה</div>
             <mat-form-field>
                 <input matInput name="end" formControlName="start" type="time">
             </mat-form-field>
         </div>
         <div *ngIf="!checked">
-            <div>סיום</div>
+            <div class="ende">שעת סיום</div>
             <mat-form-field>
                 <input class="col-md-5 end" matInput name="end" formControlName="end" type="time">
             </mat-form-field>
         </div>
         <div>
-            <mat-checkbox (click)="markedChecked()"></mat-checkbox>
-            <span>  היעדרות</span>
+            <span class="mis"> היעדרות</span>
             <div>
-                <mat-form-field *ngIf="checked">
+                <mat-form-field>
                     <mat-label>בחר סיבה</mat-label>
                     <mat-select formControlName="absent">
-                        <mat-option value="מחלה">מחלה</mat-option>
-                        <mat-option value="חופש">חופש</mat-option>
-                        <mat-option value="ביטול">ביטול שיעור</mat-option>
+                        <mat-option value="לא נעדר" (click)="markedChecked()" > </mat-option>
+                        <mat-option value="מחלה" (click)="markedChecked()" >מחלה</mat-option>
+                        <mat-option value="חופש" (click)="markedChecked()">חופש</mat-option>
+                        <mat-option value="ביטול" (click)="markedChecked()">ביטול שיעור</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
         </div>
         <div>
-            <div>דווח</div>
+            <div class="report">הוסף דווח</div>
             <mat-icon (click)="onSubmit()">schedule</mat-icon>
         </div>
     </form>

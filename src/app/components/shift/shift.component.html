@@ -1,21 +1,21 @@
 <mat-card class="container">
     <div>
-        <div>Date</div>
+        <div class="date"> תאריך עבודה</div>
         <div>{{shift.date}}</div>
     </div>
     <div>
-        <div>Start</div>
+        <div class="headline">שעת התחלה</div>
         <div *ngIf='shift.absent === undefined'>{{shift.start}}</div>
     </div>
     <div>
-        <div>End</div>
+        <div class="end">שעת סיום</div>
         <div *ngIf='shift.absent === undefined'>{{shift.end}}</div>
     </div>
     <div>
-        <div>Absent</div>
+        <div class="absent">היעדרות מהסיבה הבאה</div>
         <div *ngIf='shift.start === undefined'>{{shift.absent}}</div>
     </div>
-    <div>
-        <mat-icon (click)="delete()">delete</mat-icon>
+    <div class="del" (click)="delete()" >מחק עדכון
+        <mat-icon> delete </mat-icon>
     </div>
 </mat-card>

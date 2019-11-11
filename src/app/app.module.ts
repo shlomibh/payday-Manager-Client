@@ -7,9 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ReportFillComponent } from './components/report-fill/report-fill.component';
 import { HistoryComponent } from './components/history/history.component';
-import { ModalDatePickerComponent } from './components/modal-date-picker/modal-date-picker.component';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
 import { CommonModule } from '@angular/common';
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
@@ -25,9 +23,7 @@ import { ShiftListComponent } from './components/shift-list/shift-list.component
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ReportFillComponent,
     HistoryComponent,
-    ModalDatePickerComponent,
     TimePickerComponent,
     SchedulePageComponent,
     AddShiftComponent,
