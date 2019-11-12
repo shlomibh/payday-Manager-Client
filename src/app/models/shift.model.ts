@@ -1,9 +1,9 @@
 export interface Shift {
-    _id?: String,
-    date: String,
-    employeeId: String,
-    start?: String,
-    end?: String,
-    absent?: String
-    department?: String
+    _id?: string,
+    date: string,
+    employeeId: string,
+    start?: string,
+    end?: string,
+    absent?: string
+    department?: string
 }

@@ -18,6 +18,8 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   canceledCounter: number = 0 ;
   dayoffCounter: number = 0;
   sickCounter: number = 0;
+  dailyDuration: number[] = [0, 0];
+  date: string;
 
   constructor(
     private shiftService: ShiftService,
@@ -28,7 +30,15 @@ export class ShiftListComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.shiftService.get(this.authService.getCurrentUser().id).subscribe(
       data => {
         this.shifts = data;
-        data.forEach(element => {
+        this.shifts.sort((a: Shift,b:Shift)=> new Date(a.date).getTime() - new Date(b.date).getTime());
+        this.date = this.shifts[0].date;
+        console.log(this.date);
+        this.shifts.forEach(element => {
+          console.log(element.date); 
+          if(this.date !== element.date){
+            this.date = element.date;
+            this.updateDurationDetails(); 
+          }
           if(element.absent === "מחלה"){
             this.sickCounter++;
           }
@@ -39,9 +49,10 @@ export class ShiftListComponent implements OnInit, OnDestroy {
             this.dayoffCounter++;
           }
           else{
-            let elementDuration = this.calculateDuration(element.start, element.end);
+            this.calculateDuration(element.start, element.end);
           }
-        })
+        });
+        this.updateDurationDetails();
       }
     ));
   }
@@ -52,24 +63,53 @@ export class ShiftListComponent implements OnInit, OnDestroy {
     ));
   }
 
+  updateDurationDetails(){
+    this.duration[0] += this.dailyDuration[0];
+    this.duration[1] += this.dailyDuration[1];
+    this.updateHours(this.duration); 
+    if(this.dailyDuration[0] >= 8 && this.dailyDuration[1] > 0){
+      this.extraHours[0] += (this.dailyDuration[0] - 8);
+      this.extraHours[1] += (this.dailyDuration[1]);
+      this.updateHours(this.extraHours);
+    }
+    else if(this.dailyDuration[0] > 8){
+      this.extraHours[0] += (this.dailyDuration[0] - 8);
+    }
+    this.dailyDuration = [0,0];
+  }
+
+  updateHours(toChange: number[]){
+    if(toChange[1] > 60){
+      const hourToAdd = toChange[1] / 60;
+      const splitedHour = hourToAdd.toString().split('.');
+      toChange[0] = toChange[0] + (+splitedHour[0]);
+      toChange[1] = toChange[1] - (+splitedHour[0]*60);
+    }
+  }
   refresh(){
     this.ngOnDestroy();
     this.ngOnInit();
   }
 
   calculateDuration(start: String, end: String){
+    
     const splitedStart = start.split(':');
-    const splitedEnd = start.split(':');
-    //this.duration[0] += (+splitedEnd[0] - (+splitedStart[0]))
-    const hourStart = new Date("01/01/2007 " + start).getHours();
-    const hourEnd = new Date("01/01/2007 " + end).getHours();
+    const splitedEnd = end.split(':');
+    let hourDiff = +splitedEnd[0] - (+splitedStart[0]);
+    let minDiff = 0;
+    const minStart = +splitedStart[1];
+    const minEnd = +splitedEnd[1];
 
-    const hourDiff = hourEnd - hourStart;
-    console.log(hourDiff);
-    if(hourDiff > 8){
-      this.extraHours[0] += (hourDiff - 8);
+    if(minStart > minEnd){
+      hourDiff = hourDiff - 1;  
+      minDiff = 60 -  (minStart - minEnd);
     }
-    this.duration[0] += hourDiff;
+    else if(minStart < minEnd){
+      minDiff = minEnd - minStart;
+    }
+
+    this.dailyDuration[0] += hourDiff;
+    this.dailyDuration[1] += minDiff;
   }
 
   ngOnDestroy(): void {
