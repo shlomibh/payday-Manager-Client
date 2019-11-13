@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter'; 
 import {
    MatButtonModule,
    MatToolbarModule,
@@ -22,7 +22,7 @@ import {
    MatPaginatorModule,
    MatDialogModule,
    MatMenuModule,
-   MatCheckboxModule
+   MatCheckboxModule,
 } from '@angular/material';
 
 @NgModule({
@@ -48,7 +48,8 @@ import {
       MatCardModule,
       MatDialogModule,
       MatMenuModule,
-      MatCheckboxModule
+      MatCheckboxModule,
+      MatMomentDateModule
    ],
    exports: [
       MatButtonModule,
@@ -70,7 +71,9 @@ import {
       MatCardModule,
       MatDialogModule,
       MatMenuModule,
-      MatCheckboxModule
+      MatCheckboxModule,
+      MatNativeDateModule,
+      MatMomentDateModule
    ],
    providers: [
       MatDatepickerModule,

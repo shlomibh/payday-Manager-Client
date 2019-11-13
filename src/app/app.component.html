@@ -6,18 +6,17 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['']">Home <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['schedule']">Fill Report</a>
+                <a class="nav-link" [routerLink]="['']">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">View Histoty</a>
+                <a class="nav-link" [routerLink]="['schedule']">Fill Report</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['history']">View Histoty</a>
             </li>
         </ul>
         <span class="navbar-text">
-     
+
     </span>
     </div>
 </nav>

@@ -16,6 +16,8 @@ import { AngularMaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShiftComponent } from './components/shift/shift.component';
 import { ShiftListComponent } from './components/shift-list/shift-list.component';
+import { HistoryPageComponent } from './components/history-page/history-page.component';
+import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ShiftListComponent } from './components/shift-list/shift-list.component
     AddShiftComponent,
     ShiftComponent,
     ShiftListComponent,
+    HistoryPageComponent,
+    DateSelectorComponent,
     
   ],
   imports: [

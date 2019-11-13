@@ -1,7 +1,7 @@
 <mat-card class="container">
     <div>
         <div class="date"> תאריך עבודה</div>
-        <div>{{shift.date}}</div>  
+        <div>{{shift.date}}</div>
     </div>
     <div>
         <div class="headline">שעת התחלה</div>
@@ -14,9 +14,14 @@
     <div>
         <div class="absent">היעדרות מהסיבה הבאה</div>
         <div *ngIf="shift.absent !== 'לא נעדר'; else notAbsent">{{shift.absent}}</div>
-        <ng-template #notAbsent></ng-template> 
+        <ng-template #notAbsent></ng-template>
     </div>
-    <div class="del" (click)="delete()" >מחק עדכון
-        <mat-icon> delete </mat-icon>
+    <div class="del" (click)="delete()">
+        <div class="del_container">
+            <div>
+                <mat-icon> delete </mat-icon>
+            </div>
+            <span>מחק עדכון</span>
+        </div>
     </div>
 </mat-card>

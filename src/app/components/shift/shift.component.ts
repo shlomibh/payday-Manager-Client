@@ -13,7 +13,6 @@ export class ShiftComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.shift);  
     const date = this.shift.date.split('/');
     this.shift.date = `${date[1]}/${date[0]}/${date[2]}`; 
   }

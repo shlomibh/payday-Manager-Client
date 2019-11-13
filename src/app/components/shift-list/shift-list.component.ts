@@ -3,6 +3,7 @@ import { Shift } from 'src/app/models/shift.model';
 import { ShiftService } from 'src/app/services/shift.service';
 import { AuthenticationService } from 'src/app/services';
 import { Subscription } from 'rxjs';
+import { IDate } from 'src/app/models/date.model';
 
 @Component({
   selector: 'app-shift-list',
@@ -27,14 +28,14 @@ export class ShiftListComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
-    this.subscriptions.push(this.shiftService.get(this.authService.getCurrentUser().id).subscribe(
+    const currentUser = this.authService.getCurrentUser();
+    const date: IDate = { month: new Date().getMonth() + 1, year: new Date().getFullYear()};
+    this.subscriptions.push(this.shiftService.getPerMonth(currentUser.id, date).subscribe(
       data => {
         this.shifts = data;
         this.shifts.sort((a: Shift,b:Shift)=> new Date(a.date).getTime() - new Date(b.date).getTime());
         this.date = this.shifts[0].date;
-        console.log(this.date);
         this.shifts.forEach(element => {
-          console.log(element.date); 
           if(this.date !== element.date){
             this.date = element.date;
             this.updateDurationDetails(); 
