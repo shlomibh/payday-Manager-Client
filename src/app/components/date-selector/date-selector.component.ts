@@ -68,8 +68,9 @@ export class DateSelectorComponent implements OnInit {
     if (this.date.value["_isValid"]) {
       const date = new Date(this.date.value["_d"]).toLocaleDateString();
       const splitedDate = date.split('/');
+      console.log(splitedDate); 
       this.dateToSend = {
-        month: +splitedDate[1],
+        month: +splitedDate[0],
         year: +splitedDate[2]
       }
       console.log(this.dateToSend);

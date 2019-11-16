@@ -75,15 +75,17 @@ export class AddShiftComponent implements OnInit {
 
   createShift(): Shift | boolean {
     const date = this.dateControl.value;
+
     const userID = this.authService.getCurrentUser().id;
     if(date === '' || date === null) return false;
+    const finalDate = new Date(date["_d"]).toLocaleDateString();
     if (this.checked) { //The employee was absent
       console.log('absent');
       const reason = this.absentControl.value;
       console.log(reason); 
       if(reason === '' || reason === null) return false;
       const shift: Shift = {
-        date: date.toLocaleDateString(),
+        date: finalDate,
         employeeId: userID,
         absent: reason
       };
@@ -91,15 +93,15 @@ export class AddShiftComponent implements OnInit {
     }
     else {
       const timeValidation = this.checkHours()
-      console.log('time validation');
-      console.log(timeValidation); 
+      //console.log('time validation');
+      //console.log(timeValidation); 
       if(timeValidation){
       const start = this.startControl.value;
       const end = this.endControl.value;
       const absent = this.absentControl.value;
       if (start !== '' && end !== '' && absent !== '') {
         const shift: Shift = {
-          date: date.toLocaleDateString(),
+          date: finalDate, 
           employeeId: userID,
           start: start,
           end: end,
@@ -109,7 +111,7 @@ export class AddShiftComponent implements OnInit {
       }
       else if(start !== '' && end !== ''){
         const shift: Shift = {
-          date: date.toLocaleDateString(),
+          date: finalDate,
           employeeId: userID,
           start: start,
           end: end,
