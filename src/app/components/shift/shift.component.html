@@ -16,7 +16,7 @@
         <div *ngIf="shift.absent !== 'לא נעדר'; else notAbsent">{{shift.absent}}</div>
         <ng-template #notAbsent></ng-template>
     </div>
-    <div class="del" (click)="delete()">
+    <div class="del" *ngIf="canDelete" (click)="delete()">
         <div class="del_container">
             <div>
                 <mat-icon> delete </mat-icon>

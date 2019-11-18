@@ -1,1 +1,3 @@
-<app-date-selector></app-date-selector>
+<app-date-selector (dateEE)="shiftContainer.updateDate($event)"></app-date-selector>
+<br>
+<app-shifts-container #shiftContainer [currentUserId]="currentUser.id" [date]="date"></app-shifts-container>

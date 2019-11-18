@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -37,18 +37,13 @@ export const MY_FORMATS = {
   ],
 })
 export class DateSelectorComponent implements OnInit {
-  currentUser;
+  @Output() dateEE = new EventEmitter();
   dateToSend: IDate;
-
   date = new FormControl(moment());
 
-  constructor(
-    private authService: AuthenticationService,
-    private shiftService: ShiftService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.currentUser = this.authService.getCurrentUser();
   }
 
   chosenYearHandler(normalizedYear: Moment) {
@@ -68,18 +63,16 @@ export class DateSelectorComponent implements OnInit {
     if (this.date.value["_isValid"]) {
       const date = new Date(this.date.value["_d"]).toLocaleDateString();
       const splitedDate = date.split('/');
-      console.log(splitedDate); 
+      // console.log(splitedDate);
       this.dateToSend = {
-        month: +splitedDate[0],
+        month: +splitedDate[1], // Shlomi: +splitedDate[0]
         year: +splitedDate[2]
-      }
+      };
       console.log(this.dateToSend);
-      this.shiftService.getPerMonth(this.currentUser.id, this.dateToSend).subscribe(
-        data => console.log(data)
-      );
-    }
-    else
+      this.dateEE.emit(this.dateToSend);
+    } else {
       console.log('you did not choose date');
+    }
   }
 
 }

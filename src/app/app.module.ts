@@ -18,6 +18,7 @@ import { ShiftComponent } from './components/shift/shift.component';
 import { ShiftListComponent } from './components/shift-list/shift-list.component';
 import { HistoryPageComponent } from './components/history-page/history-page.component';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
+import { ShiftsContainerComponent } from './components/shifts-container/shifts-container.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { DateSelectorComponent } from './components/date-selector/date-selector.
     ShiftListComponent,
     HistoryPageComponent,
     DateSelectorComponent,
+    ShiftsContainerComponent,
     
   ],
   imports: [

@@ -1,16 +1,24 @@
-<app-shift *ngFor="let shift of shifts" [shift]="shift" (deleteEE)="deleteShift($event)"></app-shift>
-<div>
+<div *ngIf="shifts.length > 0 else empty">
+  <app-shift *ngFor="let shift of shifts" [shift]="shift" (deleteEE)="deleteShift($event)"></app-shift>
+  <div>
     סהכ שעות: {{duration[0]}}:{{duration[1]}}
-</div>
-<div>
-    סהכ שעות נוספות: {{extraHours[0]}}:{{extraHours[1]}} 
-</div>
-<div>
+  </div>
+  <div>
+    סהכ שעות נוספות: {{extraHours[0]}}:{{extraHours[1]}}
+  </div>
+  <div>
     סהכ מחלה: {{sickCounter}}
-</div>
-<div>
+  </div>
+  <div>
     סהכ חופש: {{dayoffCounter}}
-</div>
-<div>
+  </div>
+  <div>
     סהכ ביטולים: {{canceledCounter}}
+  </div>
 </div>
+
+<ng-template #empty>
+    <div class="empty-list">
+        אין משמרות מדווחות החודש.
+    </div>
+</ng-template>

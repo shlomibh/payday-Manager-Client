@@ -14,7 +14,7 @@ export class AddShiftComponent implements OnInit {
   @Output() addClickedEE = new EventEmitter();
   shiftForm: FormGroup;
 
-  checked: boolean = false;
+  checked = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthenticationService,
@@ -49,77 +49,70 @@ export class AddShiftComponent implements OnInit {
     return this.shiftForm.get('absent');
   }
 
-  markedChecked(){
-    if(this.shiftForm.get('absent').value === "מחלה" || this.shiftForm.get('absent').value === "חופש")
+  markedChecked() {
+    if (this.shiftForm.get('absent').value === 'מחלה' || this.shiftForm.get('absent').value === 'חופש') {
       this.checked = true;
-    else
+    } else {
       this.checked = false;
+    }
   }
 
-  checkHours(): boolean{
+  checkHours(): boolean {
     const start = this.startControl.value;
     const end = this.endControl.value;
     const startTime = start.split(':');
     const endTime = end.split(':');
-    if(+startTime[0] > +endTime[0]){
+    if (+startTime[0] > +endTime[0]) {
       return false;
-    }  
-    else if(+startTime[0] === +endTime[0]  && +startTime[1] > +endTime[1]){
+    } else if (+startTime[0] === +endTime[0]  && +startTime[1] > +endTime[1]) {
         return false;
-      }
-    else if(+startTime[0] === +endTime[0] && +startTime[1] === +endTime[1]){
-      return false; 
+      } else if (+startTime[0] === +endTime[0] && +startTime[1] === +endTime[1]) {
+      return false;
     }
     return true;
   }
 
   createShift(): Shift | boolean {
     const date = this.dateControl.value;
-
     const userID = this.authService.getCurrentUser().id;
-    if(date === '' || date === null) return false;
-    const finalDate = new Date(date["_d"]).toLocaleDateString();
-    if (this.checked) { //The employee was absent
+    if (date === '' || date === null) { return false; }
+    const finalDate = new Date(date['_d']).toLocaleDateString();
+    if (this.checked) { // The employee was absent
       console.log('absent');
       const reason = this.absentControl.value;
-      console.log(reason); 
-      if(reason === '' || reason === null) return false;
+      console.log(reason);
+      if (reason === '' || reason === null) { return false; }
       const shift: Shift = {
         date: finalDate,
         employeeId: userID,
         absent: reason
       };
       return shift;
-    }
-    else {
-      const timeValidation = this.checkHours()
-      //console.log('time validation');
-      //console.log(timeValidation); 
-      if(timeValidation){
+    } else {
+      const timeValidation = this.checkHours();
+      if (timeValidation) {
       const start = this.startControl.value;
       const end = this.endControl.value;
       const absent = this.absentControl.value;
       if (start !== '' && end !== '' && absent !== '') {
         const shift: Shift = {
-          date: finalDate, 
+          date: finalDate,
           employeeId: userID,
-          start: start,
-          end: end,
-          absent: absent
+          start,
+          end,
+          absent
         };
-        return shift; 
-      }
-      else if(start !== '' && end !== ''){
+        return shift;
+      } else if (start !== '' && end !== '') {
         const shift: Shift = {
           date: finalDate,
           employeeId: userID,
-          start: start,
-          end: end,
+          start,
+          end,
         };
-      return shift;
+        return shift;
       }
-    }
-    else{
+    } else {
       return false;
     }
     }
@@ -129,16 +122,15 @@ export class AddShiftComponent implements OnInit {
   onSubmit() {
     const shift = this.createShift();
     console.log(shift);
-    if(shift){
+    if (shift) {
       this.shiftService.post(shift as Shift).subscribe(
         shift => {
           this.shiftForm.reset();
           this.addClickedEE.emit(true);
         }
       );
-    }
-    else{
-      console.log('form invalid');  //need to set pop-up error
+    } else {
+      console.log('form invalid');  // need to set pop-up error
     }
 
   }
