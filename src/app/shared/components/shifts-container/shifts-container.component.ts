@@ -22,9 +22,10 @@ export class ShiftsContainerComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.shiftService.getPerMonth(this.currentUserId, this.date)
       .subscribe(data => {
         this.shifts = data;
+        console.log(this.shifts); 
         // need on Oren Computer.
-        this.shifts.forEach(elem => elem.date = this.changeStringDate(elem.date));
-        // - checks without on Shlomi Computer
+        //  this.shifts.forEach(elem => elem.date = this.changeStringDate(elem.date)); 
+        // - checks without on Shlomi Computer 
 
         this.shifts.sort((a: Shift, b: Shift) => new Date(a.date).getTime() - new Date(b.date).getTime());
       }));

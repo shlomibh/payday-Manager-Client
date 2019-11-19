@@ -33,12 +33,6 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     console.log(this.shifts);
-    // const currentUser = this.authService.getCurrentUser();
-    // const date: IDate = { month: new Date().getMonth() + 1, year: new Date().getFullYear() };
-    // this.subscriptions.push(this.shiftService.getPerMonth(currentUser.id, date).subscribe(
-    //   data => {
-    //     this.shifts = data;
-    //     this.shifts.sort((a: Shift, b: Shift) => new Date(a.date).getTime() - new Date(b.date).getTime());
     if (this.shifts.length > 0) {
       this.date = this.shifts[0].date;
       this.shifts.forEach(element => {

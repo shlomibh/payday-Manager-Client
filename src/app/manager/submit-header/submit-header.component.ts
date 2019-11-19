@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -21,9 +21,9 @@ export const MY_FORMATS = {
   },
 };
 @Component({
-  selector: 'app-date-selector',
-  templateUrl: './date-selector.component.html',
-  styleUrls: ['./date-selector.component.css'],
+  selector: 'app-submit-header',
+  templateUrl: './submit-header.component.html',
+  styleUrls: ['./submit-header.component.css'],
   providers: [
     {
       provide: DateAdapter,
@@ -34,14 +34,17 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class DateSelectorComponent implements OnInit {
-  @Output() dateEE = new EventEmitter();
+export class SubmitHeaderComponent implements OnInit {
+  @Input() lectors;
+  @Output() dataEE = new EventEmitter();
   dateToSend: IDate;
   date = new FormControl(moment());
+  selected;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.lectors); 
   }
 
   chosenYearHandler(normalizedYear: Moment) {
@@ -58,19 +61,22 @@ export class DateSelectorComponent implements OnInit {
   }
 
   showShifts() {
-    if (this.date.value["_isValid"]) {
-      const date = new Date(this.date.value["_d"]).toLocaleDateString();
-      const splitedDate = date.split('/');
-      // console.log(splitedDate);
-      this.dateToSend = {
-        month: +splitedDate[0], // Shlomi: +splitedDate[0]
-        year: +splitedDate[2]
-      };
-      console.log(this.dateToSend);
-      this.dateEE.emit(this.dateToSend);
-    } else {
-      console.log('you did not choose date');
+    console.log(this.selected); 
+    if(this.selected !== undefined) {
+      if (this.date.value["_isValid"]) {
+        const date = new Date(this.date.value["_d"]).toLocaleDateString();
+        const splitedDate = date.split('/');
+        // console.log(splitedDate); 
+        this.dateToSend = {
+          month: +splitedDate[0], // Shlomi: +splitedDate[0]
+          year: +splitedDate[2]
+        };
+        const dataToSend = { lector: this.selected, date: this.dateToSend};
+        console.log(dataToSend);
+        this.dataEE.emit(dataToSend);
+      }
+  } else {
+      console.log('you did not choose date or lector');
     }
   }
-
 }

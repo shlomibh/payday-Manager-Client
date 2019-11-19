@@ -1,0 +1,8 @@
+.card-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.lector-container {
+    margin-right: 2rem; 
+}

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { SubmitShiftsPageComponent } from './submit-shifts-page/submit-shifts-page.component';
 
 
-const routes: Routes = [{path: 'dashboard', component: DashboardComponent}];
+const routes: Routes = [{path: 'submit', component: SubmitShiftsPageComponent}]; 
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

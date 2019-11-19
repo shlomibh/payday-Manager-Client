@@ -7,35 +7,22 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HistoryComponent } from './components/history/history.component';
-import { TimePickerComponent } from './components/time-picker/time-picker.component';
 import { CommonModule } from '@angular/common';
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
-import { AddShiftComponent } from './components/add-shift/add-shift.component';
-import { AngularMaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShiftComponent } from './components/shift/shift.component';
-import { ShiftListComponent } from './components/shift-list/shift-list.component';
 import { HistoryPageComponent } from './components/history-page/history-page.component';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
-import { ShiftsContainerComponent } from './components/shifts-container/shifts-container.component';
-
+import { ManagerModule } from './manager/manager.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HistoryComponent,
-    TimePickerComponent,
     SchedulePageComponent,
-    AddShiftComponent,
-    ShiftComponent,
-    ShiftListComponent,
     HistoryPageComponent,
     DateSelectorComponent,
-    ShiftsContainerComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -45,8 +32,9 @@ import { ShiftsContainerComponent } from './components/shifts-container/shifts-c
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    AngularMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ManagerModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

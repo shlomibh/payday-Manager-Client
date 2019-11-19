@@ -18,7 +18,7 @@ export class ShiftComponent implements OnInit {
   ngOnInit() {
     const date = this.shift.date.split('/');
     this.shift.date = `${date[1]}/${date[0]}/${date[2]}`;
-    this.canDelete = this.route.snapshot.url[0].path !== 'history';
+    this.canDelete = this.route.snapshot.url[0].path === 'schedule';
   }
 
   delete() {

@@ -4,6 +4,7 @@ export interface Shift {
     employeeId: string,
     start?: string,
     end?: string,
-    absent?: string
-    department?: string
+    absent?: string,
+    department?: string,
+    submitted?: boolean
 }

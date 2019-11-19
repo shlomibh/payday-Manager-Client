@@ -1,0 +1,21 @@
+<mat-card  *ngIf="lectors !== undefined" class="card-container">
+        <div class="lector-container">
+                <mat-form-field>
+                        <mat-label>בחר מרצה</mat-label>
+                        <mat-select [(value)]="selected">
+                          <mat-option *ngFor="let lector of lectors" [value]="lector._id">
+                            {{lector.firstName}} {{lector.lastName}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>        
+                    </div>
+            <div class="datepicker-container">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="dp" placeholder="בחר חודש ושנה" [formControl]="date">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)" (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
+                    </mat-datepicker>
+                </mat-form-field>
+                <button mat-button (click)="showShifts()"> הצג משמרות</button>
+            </div>
+</mat-card>

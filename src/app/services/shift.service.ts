@@ -26,6 +26,7 @@ get(id: String): Observable < Shift[] > {
 }
 
 getPerMonth(id: String, date: IDate): Observable < Shift[] > {
+  console.log(date); 
   return this.http.get(`/api/shifts/${id}/m=${date.month}/y=${date.year}`,)
     .pipe(map((data: Shift[]) => {
       return data;

@@ -26,7 +26,7 @@ export class SchedulePageComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
     const date = new Date().toLocaleDateString();
     const splittedDate = date.split('/');
-    this.currentlyDate = { month: +splittedDate[1], year: +splittedDate[2] };
+    this.currentlyDate = { month: +splittedDate[0], year: +splittedDate[2] }; // Shlomi[0]
   }
 
 }

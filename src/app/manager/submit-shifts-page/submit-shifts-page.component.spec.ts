@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimePickerComponent } from './time-picker.component';
+import { SubmitShiftsPageComponent } from './submit-shifts-page.component';
 
-describe('TimePickerComponent', () => {
-  let component: TimePickerComponent;
-  let fixture: ComponentFixture<TimePickerComponent>;
+describe('SubmitShiftsPageComponent', () => {
+  let component: SubmitShiftsPageComponent;
+  let fixture: ComponentFixture<SubmitShiftsPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimePickerComponent ]
+      declarations: [ SubmitShiftsPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimePickerComponent);
+    fixture = TestBed.createComponent(SubmitShiftsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
