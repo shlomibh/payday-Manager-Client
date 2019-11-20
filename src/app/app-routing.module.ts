@@ -7,7 +7,7 @@ import { SchedulePageComponent } from './components/schedule-page/schedule-page.
 import { HistoryPageComponent } from './components/history-page/history-page.component';
 
 
-
+// ניתוב דפים-שם הדף ואיזה קומפננטות אני משתמש בכל דף,מי יכול לצפות בדף
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
