@@ -6,6 +6,8 @@ import { ShiftListComponent } from './components/shift-list/shift-list.component
 import { AddShiftComponent } from './components/add-shift/add-shift.component';
 import { ShiftsContainerComponent } from './components/shifts-container/shifts-container.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
+import { SharedRoutingModule } from './shared-routing.module';
 
 
 
@@ -14,19 +16,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShiftComponent,
     ShiftListComponent,
     AddShiftComponent,
-    ShiftsContainerComponent
+    ShiftsContainerComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedRoutingModule,
   ],
   exports: [
     ShiftComponent,
     ShiftListComponent,
     AddShiftComponent,
     ShiftsContainerComponent,
+    HeaderComponent,
+    SharedRoutingModule,
     AngularMaterialModule,
   ]
 })

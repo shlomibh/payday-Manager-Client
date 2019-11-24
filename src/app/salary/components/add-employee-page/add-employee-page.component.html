@@ -1,0 +1,57 @@
+    <mat-card>
+      <form [formGroup]="addEmployeeForm" class="add-employee-form" (ngSubmit)="onSubmit()">
+        <h1> הוספת עובד חדש </h1>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="כתובת מייל" type="email" formControlName="email" requried>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="שם משתמש" type="text" formControlName="username" requried>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="סיסמה" type="password" formControlName="password" requried>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="שם פרטי" type="text" formControlName="firstName" requried>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="שם משפחה" type="text" formControlName="lastName" requried>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="טלפון" type="tel" formControlName="telephone" requried>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>בחר תפקיד</mat-label>
+            <mat-select [(value)]="roleSelected" formControlName="role" requried>
+              <mat-option value="admin">אדמין</mat-option>
+              <mat-option value="lector">מרצה</mat-option>
+              <mat-option value="salary">מנהל שכר</mat-option>
+              <mat-option value="manager">ראש מחלקה</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field *ngIf="roleSelected !== undefined && (roleSelected !== 'admin' && roleSelected !== 'salary')">
+            <mat-label>בחר מחלקה</mat-label>
+            <mat-select [(value)]="departSelected" formControlName="department" requried>
+              <mat-option value="biology">ביולוגיה</mat-option>
+              <mat-option value="software">תוכנה</mat-option>
+              <mat-option value="industry">תעשייה וניהול</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit" [disabled]="!formValidation()">הוסף עובד</button>
+      </form>
+    </mat-card>

@@ -12,8 +12,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'schedule', component: SchedulePageComponent, canActivate: [AuthGuard] },
-  {path: 'history',component: HistoryPageComponent,canActivate: [AuthGuard] },
-  {path: 'manager', loadChildren: () => import('src/app/manager/manager.module').then(m => m.ManagerModule)},
+  { path: 'history', component: HistoryPageComponent, canActivate: [AuthGuard] },
+  { path: 'manager', loadChildren: () => import('src/app/manager/manager.module').then(m => m.ManagerModule) },
+  { path: 'salary', loadChildren: () => import('src/app/salary/salary.module').then(m => m.SalaryModule) },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
