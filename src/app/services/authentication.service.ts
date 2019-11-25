@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/User';
-
+import { Employee } from '../models/employee.model';
 
 
 @Injectable({ providedIn: 'root' })
@@ -20,6 +20,10 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
+    register(employee: Employee) {
+        return this.http.post<any>(`/api/users/register`, employee);
+    }
+
     login(email: string, password: string) {
         return this.http.post<any>(`/api/users/login`, { email, password })
             .pipe(map(user => {
@@ -30,7 +34,6 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }
-
                 return user;
             }));
     }

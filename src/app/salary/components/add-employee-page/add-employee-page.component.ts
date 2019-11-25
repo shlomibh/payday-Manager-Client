@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Employee } from 'src/app/models/employee.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 class Model {
   email = '';
@@ -26,7 +28,8 @@ export class AddEmployeePageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService,
   ) {
     this.addEmployeeForm = fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,7 +37,7 @@ export class AddEmployeePageComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[a-zA-Z0-9]*[A-Z]+[a-zA-Z0-9]*')]],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
-      telephone: ['', [Validators.required]],
+      telephone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       role: ['', [Validators.required]],
       department: ['', [Validators.required]],
     });
@@ -79,26 +82,23 @@ export class AddEmployeePageComponent implements OnInit {
 
   onSubmit() {
     const credentials = this.addEmployeeForm.value;
-    console.log(credentials);
+    const employee: Employee = {
+      username: credentials.username,
+      email: credentials.email,
+      password: credentials.password,
+      firstName: credentials.firstName,
+      lastName: credentials.lastName,
+      telephone: credentials.telephone,
+      role: credentials.role,
+      department: credentials.department
+    };
+    this.authService.register(employee).subscribe(
+      employee => {
+        console.log(employee);
+        this.addEmployeeForm.reset();
+      }
+    );
+
   }
-
-  formValidation(): boolean {
-    if (this.roleSelected === 'manager' || this.roleSelected === 'lector') {
-      return this.addEmployeeForm.valid;
-    } else {
-      return (
-        this.emailControl.valid && this.usernameControl.valid &&
-        this.passwordControl.valid && this.roleControl.valid &&
-        this.telephoneControl.valid && this.firstNameControl.valid && this.lastNameControl.valid
-
-
-      );
-    }
-  }
-
-  // hasError(controlName: string) {
-  //   const control = this.addEmployeeForm.controls[controlName];
-  //   return (control.errors && (control.dirty || control.touched));
-  // }
 
 }
