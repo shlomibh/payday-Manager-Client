@@ -37,6 +37,7 @@ export class AddEmployeePageComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[a-zA-Z0-9]*[A-Z]+[a-zA-Z0-9]*')]],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
+      id: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       telephone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       role: ['', [Validators.required]],
       department: ['', [Validators.required]],
@@ -67,6 +68,9 @@ export class AddEmployeePageComponent implements OnInit {
     return this.addEmployeeForm.get('lastName');
   }
 
+  get idControl(): AbstractControl {
+    return this.addEmployeeForm.get('id');
+  }
 
   get telephoneControl(): AbstractControl {
     return this.addEmployeeForm.get('telephone');
@@ -88,13 +92,15 @@ export class AddEmployeePageComponent implements OnInit {
       password: credentials.password,
       firstName: credentials.firstName,
       lastName: credentials.lastName,
-      telephone: credentials.telephone,
+      id: credentials.id,
+      phoneNumber: credentials.telephone,
       role: credentials.role,
       department: credentials.department
     };
     this.authService.register(employee).subscribe(
       employee => {
         console.log(employee);
+        alert('העובד נוסף בהצלחה');
         this.addEmployeeForm.reset();
       }
     );
