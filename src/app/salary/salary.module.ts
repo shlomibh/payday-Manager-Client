@@ -6,11 +6,19 @@ import { StatisticalPageComponent } from './components/statistical-page/statisti
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SatisticsHeaderComponent } from './components/satistics-header/satistics-header.component';
+import { LectorStatsComponent } from './components/lector-stats/lector-stats.component';
+import { DepartmentStatsComponent } from './components/department-stats/department-stats.component';
 
 
 
 @NgModule({
-  declarations: [AddEmployeePageComponent, StatisticalPageComponent, SatisticsHeaderComponent],
+  declarations: [
+    AddEmployeePageComponent,
+    StatisticalPageComponent, 
+    SatisticsHeaderComponent, 
+    LectorStatsComponent, 
+    DepartmentStatsComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

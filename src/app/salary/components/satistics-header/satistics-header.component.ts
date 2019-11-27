@@ -6,6 +6,9 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { Moment } from 'moment';
 import { IDate } from 'src/app/models/date.model';
+import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/services';
+import { Employee } from 'src/app/models/employee.model';
 
 const moment = _moment;
 
@@ -35,16 +38,27 @@ export const MY_FORMATS = {
   ],
 })
 export class SatisticsHeaderComponent implements OnInit {
-  @Input() lectors;
   @Output() dataEE = new EventEmitter();
+  @Input() isLecStats: boolean;
+  @Input() isDepartStats: boolean;
+  lectors: Employee[];
   dateToSend: IDate;
   date = new FormControl(moment());
   selected;
 
-  constructor() { }
+  constructor(
+    public route: ActivatedRoute,
+    private authService: AuthenticationService
+    ) { }
 
   ngOnInit() {
-    console.log(this.lectors);
+    if(this.isLecStats === true) {
+       this.authService.getLectorsList().subscribe(
+         (lectors: Employee[]) => this.lectors = lectors
+       );
+      }
+    else if(this.isDepartStats === true) {
+    }
   }
 
   chosenYearHandler(normalizedYear: Moment) {
@@ -60,13 +74,12 @@ export class SatisticsHeaderComponent implements OnInit {
     datepicker.close();
   }
 
-  showShifts() {
+  showStats() {
     console.log(this.selected);
     if (this.selected !== undefined) {
       if (this.date.value["_isValid"]) {
         const date = new Date(this.date.value["_d"]).toLocaleDateString();
         const splitedDate = date.split('/');
-        // console.log(splitedDate);
         this.dateToSend = {
           month: +splitedDate[0], // Shlomi: +splitedDate[0]
           year: +splitedDate[2]

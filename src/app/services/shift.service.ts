@@ -42,6 +42,10 @@ post(shift: Shift): Observable < Shift > {
     ));
 }
 
+submitShifts(employeeId: string, date: IDate) {
+  return this.http.post(`/api/shifts/submit/${employeeId}`, { employeeId, date });
+}
+
 delete (shiftId: String) {
   return this.http.delete(`/api/shifts/${shiftId}`);
 }

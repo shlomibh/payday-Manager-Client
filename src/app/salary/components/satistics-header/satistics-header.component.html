@@ -1,28 +1,17 @@
 <mat-card class="card-container">
-  department selector
-  <!-- *ngIf="lectors !== undefined"  -->
-  <!-- <div class="department-container">
-    <mat-form-field>
-      <mat-label>בחר מרצה</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option *ngFor="let depart of departments" [value]="depart">
-          {{depart}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div *ngIf="route.snapshot.url[0].path === 'lectorStatistics'" class="lector-container">
+    <div *ngIf="lectors !== 'undefined'">
+      <mat-form-field>
+        <mat-label>בחר מרצה</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option *ngFor="let lector of lectors" [value]="lector._id">
+            {{lector.firstName}} {{lector.lastName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 
-  <div class="lector-container">
-    <mat-form-field>
-      <mat-label>בחר מרצה</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option *ngFor="let lector of lectors" [value]="lector._id">
-          {{lector.firstName}} {{lector.lastName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div> -->
-     lector selector
   <div class="datepicker-container">
     <mat-form-field>
       <input matInput [matDatepicker]="dp" placeholder="בחר חודש ושנה" [formControl]="date">
@@ -31,6 +20,6 @@
         (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
       </mat-datepicker>
     </mat-form-field>
-    <button mat-button (click)="showShifts()"> הצג משמרות</button>
+    <button mat-button (click)="showStats()"> הצג סטטיסטיקה</button>
   </div>
 </mat-card>

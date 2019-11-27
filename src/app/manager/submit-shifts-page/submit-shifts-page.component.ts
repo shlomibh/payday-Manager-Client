@@ -23,7 +23,11 @@ export class SubmitShiftsPageComponent implements OnInit {
   ngOnInit() {
     this.id = this.authService.getCurrentUser().id;
     this.lectorService.getLectorsListOfDepart(this.id).subscribe(
-      data => this.lectors = data
+      data => {
+        this.lectors = data;
+        console.log('lectors');
+        
+      }
     );
   }
 

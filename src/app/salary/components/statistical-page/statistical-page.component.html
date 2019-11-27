@@ -1,2 +1,3 @@
-<app-satistics-header></app-satistics-header>
-<p>details</p>
+<app-satistics-header [isLecStats]="isLecStats" [isDepartStats]="isDepartStats"></app-satistics-header>
+<app-lector-stats *ngIf="isLecStats !== undefined"></app-lector-stats>
+<app-department-stats *ngIf="isDepartStats !== undefined"></app-department-stats>

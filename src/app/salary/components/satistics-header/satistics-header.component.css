@@ -1,4 +1,9 @@
 .card-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+}
+
+.lector-container {
+    margin-right: 1rem;
 }

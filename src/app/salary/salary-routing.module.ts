@@ -6,7 +6,8 @@ import { StatisticalPageComponent } from './components/statistical-page/statisti
 
 const routes: Routes = [
     { path: 'addEmployee', component: AddEmployeePageComponent },
-    { path: 'statistics', component: StatisticalPageComponent },
+    { path: 'lectorStatistics', component: StatisticalPageComponent },
+    { path: 'departmentStatistics', component: StatisticalPageComponent },
 ];
 
 @NgModule({

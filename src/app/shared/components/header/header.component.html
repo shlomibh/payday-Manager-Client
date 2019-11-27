@@ -22,7 +22,10 @@
         <a class="nav-link" [routerLink]="['salary/addEmployee']">Add Employee</a>
       </li>
       <li class="nav-item" *ngIf="currentUser.role === 'salary' || currentUser.role === 'admin' ">
-        <a class="nav-link" [routerLink]="['salary/statistics']">Statistics</a>
+        <a class="nav-link" [routerLink]="['salary/lectorStatistics']">Lector Stats</a>
+      </li>
+      <li class="nav-item" *ngIf="currentUser.role === 'salary' || currentUser.role === 'admin' ">
+        <a class="nav-link" [routerLink]="['salary/departmentStatistics']">Department Stats</a>
       </li>
     </ul>
     <span class="navbar-text">
