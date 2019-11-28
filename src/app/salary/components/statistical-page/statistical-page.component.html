@@ -1,3 +1,4 @@
-<app-satistics-header [isLecStats]="isLecStats" [isDepartStats]="isDepartStats"></app-satistics-header>
-<app-lector-stats *ngIf="isLecStats !== undefined"></app-lector-stats>
-<app-department-stats *ngIf="isDepartStats !== undefined"></app-department-stats>
+<app-satistics-header [isLecStats]="isLecStats" [isDepartStats]="isDepartStats" (lecDataEE)="updateLecData($event)" (depDataEE)="updateDepData($event)"></app-satistics-header>
+<br>
+<app-lector-stats *ngIf="lecData !== undefined" [lecData]="lecData"></app-lector-stats>
+<app-department-stats *ngIf="depData !== undefined" [depData]="depData"></app-department-stats>

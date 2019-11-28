@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Shift } from '../models/shift.model';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { AuthenticationService } from './authentication.service';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { IDate } from '../models/date.model';
 
@@ -12,8 +11,7 @@ import { IDate } from '../models/date.model';
 export class ShiftService {
 
   constructor(
-    private http: HttpClient,
-    private auth: AuthenticationService
+    private http: HttpClient
   ) { }
 
 

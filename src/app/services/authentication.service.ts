@@ -44,10 +44,6 @@ export class AuthenticationService {
         this.currentUserSubject.next(null);
     }
 
-    getLectorsList() {
-        return this.http.get('api/users/lectors');
-    }
-
     getCurrentUser() {
         return JSON.parse(localStorage['currentUser']);
     }

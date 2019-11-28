@@ -38,10 +38,12 @@ export const MY_FORMATS = {
   ],
 })
 export class SatisticsHeaderComponent implements OnInit {
-  @Output() dataEE = new EventEmitter();
+  @Output() lecDataEE = new EventEmitter();
+  @Output() depDataEE = new EventEmitter();
   @Input() isLecStats: boolean;
   @Input() isDepartStats: boolean;
-  lectors: Employee[];
+  options =['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
+  queries =['canceled', 'sickness', 'dayoff', 'extraHours', 'inTime'];
   dateToSend: IDate;
   date = new FormControl(moment());
   selected;
@@ -52,13 +54,6 @@ export class SatisticsHeaderComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    if(this.isLecStats === true) {
-       this.authService.getLectorsList().subscribe(
-         (lectors: Employee[]) => this.lectors = lectors
-       );
-      }
-    else if(this.isDepartStats === true) {
-    }
   }
 
   chosenYearHandler(normalizedYear: Moment) {
@@ -84,12 +79,38 @@ export class SatisticsHeaderComponent implements OnInit {
           month: +splitedDate[0], // Shlomi: +splitedDate[0]
           year: +splitedDate[2]
         };
-        const dataToSend = { lector: this.selected, date: this.dateToSend };
-        console.log(dataToSend);
-        this.dataEE.emit(dataToSend);
+        let dataToSend;
+        const choseQuery = this.selectQuery(this.selected);
+        if(this.isLecStats) 
+        {
+          dataToSend = { type: 'lectors', stat: choseQuery, date: this.dateToSend };
+          console.log(dataToSend);
+          this.lecDataEE.emit(dataToSend);
+        }
+        else if(this.isDepartStats){
+          dataToSend = { type: 'department', stat: choseQuery, date: this.dateToSend };
+          this.depDataEE.emit(dataToSend);
+        }
       }
     } else {
       console.log('you did not choose date or lector');
+    }
+  }
+
+  selectQuery(selected){
+    switch(selected){
+      case 'ביטול שיעור':
+        return this.queries[0];
+      case 'מחלה':
+        return this.queries[1];
+      case 'חופש':
+        return this.queries[2];
+      case 'שעות נוספות' :
+        return this.queries[3];
+      case 'הגשת דוח בזמן':
+        return this.queries[4]
+      default:
+        return this.queries[0];
     }
   }
 }

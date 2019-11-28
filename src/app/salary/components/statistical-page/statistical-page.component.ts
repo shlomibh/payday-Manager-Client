@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class StatisticalPageComponent implements OnInit {
   isLecStats: boolean;
   isDepartStats: boolean;
+  lecData;
+  depData;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,6 +20,14 @@ export class StatisticalPageComponent implements OnInit {
     else if(this.route.snapshot.url[0].path === 'departmentStatistics'){
       this.isDepartStats = true;
     }
+  }
+
+  updateLecData(data: any) {
+    this.lecData = data;
+  }
+
+  updateDepData(data: any) {
+    this.depData = data;
   }
 
 }

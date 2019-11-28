@@ -1,15 +1,13 @@
 <mat-card class="card-container">
-  <div *ngIf="route.snapshot.url[0].path === 'lectorStatistics'" class="lector-container">
-    <div *ngIf="lectors !== 'undefined'">
+  <div class="selector-container">
       <mat-form-field>
-        <mat-label>בחר מרצה</mat-label>
+        <mat-label>בחר ניתוח סטטיסטי</mat-label>
         <mat-select [(value)]="selected">
-          <mat-option *ngFor="let lector of lectors" [value]="lector._id">
-            {{lector.firstName}} {{lector.lastName}}
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
   </div>
 
   <div class="datepicker-container">

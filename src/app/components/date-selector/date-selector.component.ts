@@ -1,3 +1,4 @@
+//קומפונטה האחראית על ״בחירת תאריך מלוח שנה המובנה בדף״
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -6,17 +7,18 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { Moment } from 'moment';
 import { IDate } from 'src/app/models/date.model';
-
+// node.js שימוש ב״מומנט״-אובייקט מסוג זה עובד גם בדפדפן וגם ב 
+//משתמשים באובייקט זה כאשר רוצים לעבוד עם תאריכים וזמנים
 const moment = _moment;
 
-export const MY_FORMATS = {
+export const MY_FORMATS = { // הפורמט בו המשתמש יכול להזין כל סוג של תאריך עם כל פורמט ויפורמט לפורמט שנציין למטה
   parse: {
     dateInput: 'MM/YYYY',
   },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
+  display: {  // הפורמטים הקיימים
+    dateInput: 'MM/YYYY', //כתיבת התאריך המדויק 
+    monthYearLabel: 'MMM YYYY', //בחירת התאריך מלו״ח שנה שיוצג
+    dateA11yLabel: 'LL', 
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-lector-stats',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lector-stats.component.css']
 })
 export class LectorStatsComponent implements OnInit {
-
-  constructor() { }
+  @Input() lecData;
+  
+  constructor(private statService: StatsService) { }
 
   ngOnInit() {
+    this.statService.getStatsPerMonth(this.lecData.type, this.lecData.stat, this.lecData.date).subscribe(
+      data => console.log(data)
+    );
   }
+
 
 }
