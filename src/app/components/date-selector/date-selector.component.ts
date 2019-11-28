@@ -13,20 +13,21 @@ const moment = _moment;
 
 export const MY_FORMATS = { // הפורמט בו המשתמש יכול להזין כל סוג של תאריך עם כל פורמט ויפורמט לפורמט שנציין למטה
   parse: {
-    dateInput: 'MM/YYYY',
+    dateInput: 'MM/YYYY', //הפורמט אליו יפורמטו כלל הפורמטים
   },
   display: {  // הפורמטים הקיימים
     dateInput: 'MM/YYYY', //כתיבת התאריך המדויק 
     monthYearLabel: 'MMM YYYY', //בחירת התאריך מלו״ח שנה שיוצג
-    dateA11yLabel: 'LL', 
-    monthYearA11yLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL', // פורמט נוסף-רושמים את החודש באנגלית,יום ,שנה
+    monthYearA11yLabel: 'MMMM YYYY', // פורמט נוסף
   },
 };
+//הגדרת הקומפונטה
 @Component({
-  selector: 'app-date-selector',
-  templateUrl: './date-selector.component.html',
-  styleUrls: ['./date-selector.component.css'],
-  providers: [
+  selector: 'app-date-selector', //זיהוי הקומפונטה
+  templateUrl: './date-selector.component.html', //מבנה הקומפונטה
+  styleUrls: ['./date-selector.component.css'], //עיצוב הקמפונוטה
+  providers: [  //ממשקים הקשורים לממשקי תאריכים שבהם הקומופנטה משתמשת
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -35,43 +36,44 @@ export const MY_FORMATS = { // הפורמט בו המשתמש יכול להזי�
 
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
-})
+}) 
+// אתחול המחלקה שמטפלת בבחירת תאריך מהמשתמש
 export class DateSelectorComponent implements OnInit {
-  @Output() dateEE = new EventEmitter();
-  dateToSend: IDate;
-  date = new FormControl(moment());
+  @Output() dateEE = new EventEmitter(); //   המטפל באירועים עם פלט "EventEmitter" משתנה מסוג 
+  dateToSend: IDate; // "IDate"משתנה עם הממשק של התאריך 
+  date = new FormControl(moment()); //התאריך אותו בחר המשתמש:input האירוע המתקבל ב 
 
   constructor() { }
 
   ngOnInit() {
   }
-
+// בחירת השנה בה בחר אותה המשתמש
   chosenYearHandler(normalizedYear: Moment) {
-    const ctrlValue = this.date.value;
+    const ctrlValue = this.date.value; //השנה אותה בחר המשתמש והכנסתה למשתנה
     ctrlValue.year(normalizedYear.year());
-    this.date.setValue(ctrlValue);
+    this.date.setValue(ctrlValue); // formשולח את הערך המתקבל ל ל
   }
-
+// בחירת החודש בה בחר אותו המשתמש
   chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.date.value;
+    const ctrlValue = this.date.value;  //החודש אותו בחר המשתמש והכנסתו למשתמש
     ctrlValue.month(normalizedMonth.month());
-    this.date.setValue(ctrlValue);
-    datepicker.close();
+    this.date.setValue(ctrlValue);// formשולח את הערך המתקבל ל ל
+    datepicker.close(); //סגירת חלון בחירת החודש והשנה ע״י המשתמש
   }
-
+// ***
   showShifts() {
-    if (this.date.value["_isValid"]) {
-      const date = new Date(this.date.value["_d"]).toLocaleDateString();
-      const splitedDate = date.split('/');
+    if (this.date.value["_isValid"]) { // בודק האם המשתמש אכן בחר תאריך
+      const date = new Date(this.date.value["_d"]).toLocaleDateString(); //   והופך אותו למחרוזתDate  יוצר משתנה מסוג 
+      const splitedDate = date.split('/'); // פונקציה זו מחלקת את המחרוזת לפי התו שמתקבל-split חילוץ השנה והחודש באמצעות פונקציית  
       // console.log(splitedDate);
       this.dateToSend = {
-        month: +splitedDate[0], // Shlomi: +splitedDate[0]
-        year: +splitedDate[2]
+        month: +splitedDate[0], // Shlomi: +splitedDate[0] // החודש יהיה במקום הראשון
+        year: +splitedDate[2] // השנה תהיה במקום השלישי
       };
       console.log(this.dateToSend);
-      this.dateEE.emit(this.dateToSend);
+      this.dateEE.emit(this.dateToSend); // (הצגת התאריך (באופן מסודר
     } else {
-      console.log('you did not choose date');
+      console.log('you did not choose date'); // אחרת מוציא הודעה שהמשתמש לא בחר תאריך
     }
   }
 

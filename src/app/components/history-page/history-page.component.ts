@@ -1,3 +1,4 @@
+// הקומפוננטה שאחראית על דף שמציג את היסטורית הדיוחחים של אותו משתמש
 import { Component, OnInit } from '@angular/core';
 import { ShiftService } from 'src/app/services/shift.service';
 import { AuthenticationService } from 'src/app/services';
