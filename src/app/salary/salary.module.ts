@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SatisticsHeaderComponent } from './components/satistics-header/satistics-header.component';
 import { LectorStatsComponent } from './components/lector-stats/lector-stats.component';
 import { DepartmentStatsComponent } from './components/department-stats/department-stats.component';
+import { StatsContainerComponent } from './components/stats-container/stats-container.component';
 
 
 
@@ -17,7 +18,7 @@ import { DepartmentStatsComponent } from './components/department-stats/departme
     StatisticalPageComponent, 
     SatisticsHeaderComponent, 
     LectorStatsComponent, 
-    DepartmentStatsComponent
+    DepartmentStatsComponent, StatsContainerComponent
   ],
   imports: [
     CommonModule,

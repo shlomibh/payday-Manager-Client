@@ -12,4 +12,8 @@ export class DepartmentStatsComponent implements OnInit {
   ngOnInit() {
   }
 
+  refresh() {
+    
+  }
+
 }

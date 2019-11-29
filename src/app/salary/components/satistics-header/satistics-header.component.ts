@@ -40,6 +40,7 @@ export const MY_FORMATS = {
 export class SatisticsHeaderComponent implements OnInit {
   @Output() lecDataEE = new EventEmitter();
   @Output() depDataEE = new EventEmitter();
+  @Output() refreshEE = new EventEmitter();
   @Input() isLecStats: boolean;
   @Input() isDepartStats: boolean;
   options =['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
@@ -91,6 +92,7 @@ export class SatisticsHeaderComponent implements OnInit {
           dataToSend = { type: 'department', stat: choseQuery, date: this.dateToSend };
           this.depDataEE.emit(dataToSend);
         }
+        this.refreshEE.emit(true);
       }
     } else {
       console.log('you did not choose date or lector');

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StatsContainerComponent } from '../stats-container/stats-container.component';
+import { LectorStatsComponent } from '../lector-stats/lector-stats.component';
+import { StatsService } from 'src/app/services/stats.service';
+import { DepartmentStatsComponent } from '../department-stats/department-stats.component';
 
 @Component({
   selector: 'app-statistical-page',
@@ -11,7 +15,13 @@ export class StatisticalPageComponent implements OnInit {
   isDepartStats: boolean;
   lecData;
   depData;
-  constructor(private route: ActivatedRoute) { }
+  lecStatsComp = new LectorStatsComponent(this.statsService);
+  depStatsComp = new DepartmentStatsComponent();
+
+  constructor(
+    private route: ActivatedRoute,
+    private statsService: StatsService
+    ) { }
 
   ngOnInit() {
     if(this.route.snapshot.url[0].path === 'lectorStatistics') {
@@ -24,10 +34,12 @@ export class StatisticalPageComponent implements OnInit {
 
   updateLecData(data: any) {
     this.lecData = data;
+    this.lecStatsComp.refresh();
   }
 
   updateDepData(data: any) {
     this.depData = data;
+    this.depStatsComp.refresh();
   }
 
 }
