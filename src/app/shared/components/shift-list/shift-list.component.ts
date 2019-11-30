@@ -112,7 +112,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
     this.ngOnInit();
   }
 
-  submitShifts(){
+  submitShifts() {
 
   }
 

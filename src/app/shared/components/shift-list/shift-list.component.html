@@ -1,6 +1,9 @@
 <div *ngIf="shifts.length > 0 else empty">
   <app-shift *ngFor="let shift of shifts" [shift]="shift" (deleteEE)="deleteShift($event)"></app-shift>
-  <div>
+  <div class="details-container">
+    <button mat-button (click)="submitShifts()" > אשר משמרות </button>
+  </div>
+  <div class="details-container">
     <h4>נתוני שעות מאושרות</h4>
     <div>
       סהכ שעות: {{duration[0]}}:{{duration[1]}}
