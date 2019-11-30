@@ -9,15 +9,20 @@ import { Subscription } from 'rxjs';
 })
 export class LectorStatsComponent implements OnInit, OnDestroy {
   @Input() lecData;
+  // dbData;
   subscriptions : Subscription[] = [];
   constructor(private statService: StatsService) { }
 
   ngOnInit() {
-    console.log(this.lecData);
-    if(this.lecData!== undefined)
-      this.subscriptions.push(this.statService.getStatsPerMonth(this.lecData.type, this.lecData.stat, this.lecData.date).subscribe(
-        data => console.log(data)
-      ));
+    // console.log(this.lecData);
+    // if(this.lecData!== undefined) {
+    //   this.subscriptions.push(this.statService.getStatsPerMonth(this.lecData.type, this.lecData.stat, this.lecData.date).subscribe(
+    //     data => {
+    //       this.dbData = data;
+    //       console.log(data);
+    //     }
+    //   ));
+    // }
   }
 
   refresh() {

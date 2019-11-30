@@ -33,7 +33,9 @@ export class StatisticalPageComponent implements OnInit {
   }
 
   updateLecData(data: any) {
-    this.lecData = data;
+    this.statsService.getStatsPerMonth(data.type, data.stat, data.date).subscribe(
+      (dataFromDb: any) => this.lecData = dataFromDb
+    );
     this.lecStatsComp.refresh();
   }
 
