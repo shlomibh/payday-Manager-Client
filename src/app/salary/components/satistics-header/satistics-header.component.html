@@ -1,15 +1,4 @@
 <mat-card class="card-container">
-  <div class="selector-container">
-      <mat-form-field>
-        <mat-label>בחר ניתוח סטטיסטי</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-  </div>
-
   <div class="datepicker-container">
     <mat-form-field>
       <input matInput [matDatepicker]="dp" placeholder="בחר חודש ושנה" [formControl]="date">

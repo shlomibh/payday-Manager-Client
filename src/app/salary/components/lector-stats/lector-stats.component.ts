@@ -7,32 +7,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './lector-stats.component.html',
   styleUrls: ['./lector-stats.component.css']
 })
-export class LectorStatsComponent implements OnInit, OnDestroy {
-  @Input() lecData;
-  // dbData;
-  subscriptions : Subscription[] = [];
-  constructor(private statService: StatsService) { }
+export class LectorStatsComponent implements OnInit {
+  @Input() lecStat;
+  @Input() index;
+  options = ['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
+
+  constructor() { }
 
   ngOnInit() {
-    // console.log(this.lecData);
-    // if(this.lecData!== undefined) {
-    //   this.subscriptions.push(this.statService.getStatsPerMonth(this.lecData.type, this.lecData.stat, this.lecData.date).subscribe(
-    //     data => {
-    //       this.dbData = data;
-    //       console.log(data);
-    //     }
-    //   ));
-    // }
-  }
-
-  refresh() {
-    this.ngOnDestroy();
-    this.ngOnInit();
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(e => e.unsubscribe());
-    this.subscriptions = [];
   }
 
 }

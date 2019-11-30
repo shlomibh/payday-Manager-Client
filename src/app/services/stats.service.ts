@@ -14,9 +14,9 @@ export class StatsService {
     private http: HttpClient
     ) { }
 
-    getStatsPerMonth(identifyAPI: String, query:String, date: IDate): Observable < Shift[] > {
-      console.log(`statistics/${identifyAPI}/q=${query}/m=${date.month}/y=${date.year}`);
-      return this.http.get(`/api/statistics/${identifyAPI}/q=${query}/m=${date.month}/y=${date.year}`)
+    getStatsPerMonth(identifyAPI: String, date: IDate): Observable < Shift[] > {
+      console.log(`statistics/${identifyAPI}/m=${date.month}/y=${date.year}`);
+      return this.http.get(`/api/statistics/${identifyAPI}/m=${date.month}/y=${date.year}`)
         .pipe(map((data: Shift[]) => {
           return data;
         }));

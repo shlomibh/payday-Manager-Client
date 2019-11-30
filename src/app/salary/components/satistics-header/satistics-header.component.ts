@@ -43,16 +43,12 @@ export class SatisticsHeaderComponent implements OnInit {
   @Output() refreshEE = new EventEmitter();
   @Input() isLecStats: boolean;
   @Input() isDepartStats: boolean;
-  options =['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
-  queries =['canceled', 'sickness', 'dayoff', 'extraHours', 'inTime'];
   dateToSend: IDate;
   date = new FormControl(moment());
-  selected;
 
   constructor(
-    public route: ActivatedRoute,
-    private authService: AuthenticationService
-    ) { }
+    public route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   }
@@ -71,48 +67,23 @@ export class SatisticsHeaderComponent implements OnInit {
   }
 
   showStats() {
-    console.log(this.selected);
-    if (this.selected !== undefined) {
-      if (this.date.value["_isValid"]) {
-        const date = new Date(this.date.value["_d"]).toLocaleDateString();
-        const splitedDate = date.split('/');
-        this.dateToSend = {
-          month: +splitedDate[0], // Shlomi: +splitedDate[0]
-          year: +splitedDate[2]
-        };
-        let dataToSend;
-        const choseQuery = this.selectQuery(this.selected);
-        if(this.isLecStats) 
-        {
-          dataToSend = { type: 'lectors', stat: choseQuery, date: this.dateToSend };
-          console.log(dataToSend);
-          this.lecDataEE.emit(dataToSend);
-        }
-        else if(this.isDepartStats){
-          dataToSend = { type: 'department', stat: choseQuery, date: this.dateToSend };
-          this.depDataEE.emit(dataToSend);
-        }
-        this.refreshEE.emit(true);
+    if (this.date.value["_isValid"]) {
+      const date = new Date(this.date.value["_d"]).toLocaleDateString();
+      const splitedDate = date.split('/');
+      this.dateToSend = {
+        month: +splitedDate[0], // Shlomi: +splitedDate[0]
+        year: +splitedDate[2]
+      };
+      let dataToSend;
+      if (this.isLecStats) {
+        dataToSend = { type: 'lectors', date: this.dateToSend };
+        this.lecDataEE.emit(dataToSend);
       }
-    } else {
-      console.log('you did not choose date or lector');
-    }
-  }
-
-  selectQuery(selected){
-    switch(selected){
-      case 'ביטול שיעור':
-        return this.queries[0];
-      case 'מחלה':
-        return this.queries[1];
-      case 'חופש':
-        return this.queries[2];
-      case 'שעות נוספות' :
-        return this.queries[3];
-      case 'הגשת דוח בזמן':
-        return this.queries[4]
-      default:
-        return this.queries[0];
+      else if (this.isDepartStats) {
+        dataToSend = { type: 'department', date: this.dateToSend };
+        this.depDataEE.emit(dataToSend);
+      }
+      this.refreshEE.emit(true);
     }
   }
 }

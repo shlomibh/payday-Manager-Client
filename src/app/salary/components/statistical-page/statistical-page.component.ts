@@ -11,11 +11,12 @@ import { DepartmentStatsComponent } from '../department-stats/department-stats.c
   styleUrls: ['./statistical-page.component.css']
 })
 export class StatisticalPageComponent implements OnInit {
-  isLecStats: boolean;
-  isDepartStats: boolean;
+  isLecStats: boolean = false;
+  isDepartStats: boolean= false;
   lecData;
   depData;
-  lecStatsComp = new LectorStatsComponent(this.statsService);
+  containerComp = new StatsContainerComponent();
+  lecStatsComp = new LectorStatsComponent();
   depStatsComp = new DepartmentStatsComponent();
 
   constructor(
@@ -26,22 +27,24 @@ export class StatisticalPageComponent implements OnInit {
   ngOnInit() {
     if(this.route.snapshot.url[0].path === 'lectorStatistics') {
       this.isLecStats = true;
-    }
-    else if(this.route.snapshot.url[0].path === 'departmentStatistics'){
+    } else if(this.route.snapshot.url[0].path === 'departmentStatistics') {
       this.isDepartStats = true;
     }
   }
 
   updateLecData(data: any) {
-    this.statsService.getStatsPerMonth(data.type, data.stat, data.date).subscribe(
+    this.statsService.getStatsPerMonth(data.type, data.date).subscribe(
       (dataFromDb: any) => this.lecData = dataFromDb
     );
-    this.lecStatsComp.refresh();
+    console.log('lector event');
+    this.containerComp.refresh();
   }
 
   updateDepData(data: any) {
-    this.depData = data;
-    this.depStatsComp.refresh();
+    this.statsService.getStatsPerMonth(data.type, data.date).subscribe(
+      (dataFromDb: any) => this.depData = dataFromDb
+    );
+    this.containerComp.refresh();
   }
 
 }

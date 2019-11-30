@@ -6,14 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./department-stats.component.css']
 })
 export class DepartmentStatsComponent implements OnInit {
-  @Input() depData;
+  @Input() depStat;
+  @Input() index;
+  options = ['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
+
   constructor() { }
 
   ngOnInit() {
-  }
-
-  refresh() {
-    
   }
 
 }

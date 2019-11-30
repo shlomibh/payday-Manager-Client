@@ -1,19 +1,19 @@
 <mat-card>
   <div class="container">
     <div class="best">
-      <h1>הכי הרבה ביטולים</h1>
-      <h2>שם : {{lecData.maxUser.firstName}} {{lecData.maxUser.lastName}}</h2>
-      <h4>מחלקה: {{lecData.maxUser.department}} </h4>
-      <p>{{lecData.maxCount}}</p>
+      <h4>הכי הרבה {{options[index]}}:</h4>
+      <h4>שם : {{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
+      <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
+      <p>{{lecStat.maxCount}}</p>
     </div>
     <div class="graph">
       <p>dsadasd asd a dasd s</p>
     </div>
     <div class="less">
-      <h1>הכי מעט ביטולים</h1>
-      <h2>שם: {{lecData.minUser.firstName}} {{lecData.minUser.lastName}}</h2>
-      <h4>מחלקה: {{lecData.minUser.department}} </h4>
-      <p>{{lecData.minCount}}</p>
+      <h4>הכי מעט {{options[index]}}:</h4>
+      <h4>שם: {{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
+      <h6>מחלקה: {{lecStat.minUser.department}} </h6>
+      <p>{{lecStat.minCount}}</p>
     </div>
   </div>
 </mat-card>

@@ -1,35 +1,28 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-stats-container',
   templateUrl: './stats-container.component.html',
   styleUrls: ['./stats-container.component.css']
 })
-export class StatsContainerComponent implements OnInit, OnDestroy{
+export class StatsContainerComponent implements OnInit, OnDestroy {
   @Input() lecData;
   @Input() depData;
-
+  @Input() isLecStats;
+  @Input() isDepartStats;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.lecData);
-    //console.log(this.depData);
   }
 
-  refresh(lecData: any, depData: any) {
-    console.log('refreshed');
-    this.lecData = lecData;
-    this.depData = depData;
-    console.log(this.lecData);
-    //console.log(this.depData);
+  refresh() {
     this.ngOnDestroy();
     this.ngOnInit();
   }
 
-
-  ngOnDestroy() {
-   // this.lecData = undefined;
-   // this.depData = undefined;
+  ngOnDestroy(): void {
   }
+
 
 }
