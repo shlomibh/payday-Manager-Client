@@ -22,6 +22,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   sickCounter = 0;
   dailyDuration: number[] = [0, 0];
   date: string;
+  dateToSend: IDate;
 
   constructor(
     private shiftService: ShiftService,
@@ -113,7 +114,22 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   }
 
   submitShifts() {
-
+    this.shifts.forEach(s => {
+      if(s.lectorSubmitted ===  false || s.lectorSubmitted === undefined) {
+        s.lectorSubmitted = true;
+        s.dateLectorSubmit = new Date().toLocaleDateString();
+      };
+    });
+    this.dateToSend = {
+      month: new Date().getMonth()+1,
+      year: new Date().getFullYear(), 
+    };
+    this.subscriptions.push(this.shiftService.submitShifts(this.shifts[0].employeeId, this.dateToSend).subscribe(
+      (data) => {
+        if(data)
+        console.log('success')
+      }
+    ));
   }
 
   ngOnDestroy(): void {

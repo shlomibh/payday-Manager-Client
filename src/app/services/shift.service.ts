@@ -41,6 +41,7 @@ post(shift: Shift): Observable < Shift > {
 }
 
 submitShifts(employeeId: string, date: IDate) {
+  console.log(date);
   return this.http.post(`/api/shifts/submit/${employeeId}`, { employeeId, date });
 }
 
