@@ -1,5 +1,5 @@
 <mat-card>
-  <div class="container">
+  <div class="container" *ngIf="index !== 3; else inTime">
     <div class="best">
       <h4>הכי הרבה {{options[index]}}</h4>
       <h4>שם : {{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
@@ -16,4 +16,24 @@
       <p>{{lecStat.minCount}}</p>
     </div>
   </div>
+
+  <ng-template #inTime>
+    <div class="container">
+      <div class="best">
+        <h4>הכי הרבה הגשות בזמן</h4>
+        <h4>שם : {{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
+        <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
+        <p>{{lecStat.maxCount}}</p>
+      </div>
+      <div class="graph">
+        <p>dsadasd asd a dasd s</p>
+      </div>
+      <div class="less">
+        <h4>הכי הרבה הגשות לא בזמן</h4>
+        <h4>שם: {{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
+        <h6>מחלקה: {{lecStat.minUser.department}} </h6>
+        <p>{{lecStat.minCount}}</p>
+      </div>
+    </div>
+  </ng-template>
 </mat-card>

@@ -1,4 +1,4 @@
-<mat-card>
+<!-- <mat-card>
   <div class="container">
     <div class="best">
       <h4>הכי הרבה {{options[index]}}</h4>
@@ -14,4 +14,41 @@
       <p>{{depStat.minCount}}</p>
     </div>
   </div>
+</mat-card> -->
+
+<mat-card>
+  <div class="container" *ngIf="index !== 3; else inTime">
+    <div class="best">
+      <h4>הכי הרבה {{options[index]}}</h4>
+      <h6>מחלקה: {{depStat.maxID}} </h6>
+      <p>{{depStat.maxCount}}</p>
+    </div>
+    <div class="graph">
+      <p>dsadasd asd a dasd s</p>
+    </div>
+    <div class="less">
+      <h4>הכי מעט {{options[index]}}:</h4>
+      <h6>מחלקה: {{depStat.minID}} </h6>
+      <p>{{depStat.minCount}}</p>
+    </div>
+  </div>
+
+  <ng-template #inTime>
+    <div class="container">
+      <div class="best">
+        <h4>הכי הרבה הגשות בזמן</h4>
+        <h6>מחלקה: {{depStat.minID}} </h6>
+        <p>{{depStat.minCount}}</p>
+      </div>
+      <div class="graph">
+        <p>dsadasd asd a dasd s</p>
+      </div>
+      <div class="less">
+        <h4>הכי הרבה הגשות לא בזמן</h4>
+        <h6>מחלקה: {{depStat.minID}} </h6>
+        <p>{{depStat.minCount}}</p>
+      </div>
+    </div>
+  </ng-template>
 </mat-card>
+

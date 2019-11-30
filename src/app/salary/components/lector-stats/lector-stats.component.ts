@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class LectorStatsComponent implements OnInit {
   @Input() lecStat;
   @Input() index;
-  options = ['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
+  options = ['ביטול שיעור', 'מחלה', 'חופש', 'הגשת דוח בזמן', 'שעות נוספות'];
 
   constructor() { }
 

@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DepartmentStatsComponent implements OnInit {
   @Input() depStat;
   @Input() index;
-  options = ['ביטול שיעור', 'מחלה', 'חופש', 'שעות נוספות', 'הגשת דוח בזמן'];
+  options = ['ביטול שיעור', 'מחלה', 'חופש', 'הגשת דוח בזמן', 'שעות נוספות'];
 
   constructor() { }
 
