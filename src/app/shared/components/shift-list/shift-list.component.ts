@@ -31,7 +31,6 @@ export class ShiftListComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
     console.log(this.shifts);
     if (this.shifts.length > 0) {
       this.date = this.shifts[0].date;
@@ -111,6 +110,10 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   refresh() {
     this.ngOnDestroy();
     this.ngOnInit();
+  }
+
+  submitShifts(){
+
   }
 
   ngOnDestroy(): void {
