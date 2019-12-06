@@ -1,7 +1,9 @@
 <div *ngIf="isLecStats && lecData !== undefined">
   <app-lector-stats *ngFor="let lecStat of lecData; let i=index" [lecStat]="lecStat" [index]="i"></app-lector-stats>
+  <app-chart *ngFor="let lecStat of lecData; let i=index" [index]="i"></app-chart>
 </div>
 <div *ngIf="isDepartStats && depData !== undefined">
   <app-department-stats *ngFor="let depStat of depData; let i=index" [depStat]="depStat" [index]="i">
   </app-department-stats>
+  <app-chart *ngFor="let depStat of depData; let i=index" [index]="i"></app-chart>
 </div>
