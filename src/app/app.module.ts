@@ -14,6 +14,7 @@ import { HistoryPageComponent } from './components/history-page/history-page.com
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 import { ManagerModule } from './manager/manager.module';
 import { SharedModule } from './shared/shared.module';
+import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     SchedulePageComponent,
     HistoryPageComponent,
     DateSelectorComponent,
+    PersonalDetailsComponent,
   ],
   imports: [
     CommonModule,

@@ -13,3 +13,8 @@ mat-card {
   flex-direction: column;
   align-items: center;
 }
+
+.graph {
+  height: 300px;
+  width: 300px;
+}

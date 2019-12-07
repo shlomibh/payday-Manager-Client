@@ -1,17 +1,11 @@
-<div>
-    <div *ngIf="index === 0">
-    <canvas id="barChart0" width="400" height="400"></canvas>
-    </div>
-    <div *ngIf="index === 1">
-    <canvas id="barChart1" width="400" height="400"></canvas>
-    </div>
-    <div *ngIf="index === 2">
-    <canvas id="barChart2" width="400" height="400"></canvas>
-    </div>
-    <div *ngIf="index === 3">
-    <canvas id="barChart3" width="400" height="400"></canvas>
-    </div>
-    <div *ngIf="index === 4">
-    <canvas id="barChart4" width="400" height="400"></canvas>
-    </div>
+<!-- <div>
+  <canvas id="cancelChart" width="400" height="400"></canvas>
+  <canvas id="sickChart" width="400" height="400"></canvas>
+  <canvas id="barChart2" width="400" height="400"></canvas>
+  <canvas id="barChart3" width="400" height="400"></canvas>
+  <canvas id="barChart4" width="400" height="400"></canvas>
+</div> -->
+
+<div class="some-class-style" *ngIf="title !== undefined">
+  <canvas [id]="title" #chart> {{ chart }}</canvas>
 </div>

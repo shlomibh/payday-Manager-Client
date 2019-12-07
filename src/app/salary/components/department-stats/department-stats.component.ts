@@ -10,7 +10,7 @@ export class DepartmentStatsComponent implements OnInit {
   @Input() index;
   barChart0;
   barChart1;
-  options = ['ביטול שיעור', 'מחלה', 'חופש', 'הגשת דוח בזמן', 'שעות נוספות'];
+  options = ['ביטול שיעור', 'מחלה', 'חופש', 'הגשת דוח בזמן'];
 
   constructor() { }
 

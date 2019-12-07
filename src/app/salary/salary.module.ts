@@ -9,16 +9,19 @@ import { SatisticsHeaderComponent } from './components/satistics-header/satistic
 import { LectorStatsComponent } from './components/lector-stats/lector-stats.component';
 import { DepartmentStatsComponent } from './components/department-stats/department-stats.component';
 import { StatsContainerComponent } from './components/stats-container/stats-container.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 
 @NgModule({
   declarations: [
     AddEmployeePageComponent,
-    StatisticalPageComponent, 
-    SatisticsHeaderComponent, 
-    LectorStatsComponent, 
-    DepartmentStatsComponent, StatsContainerComponent
+    StatisticalPageComponent,
+    SatisticsHeaderComponent,
+    LectorStatsComponent,
+    DepartmentStatsComponent,
+    StatsContainerComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,

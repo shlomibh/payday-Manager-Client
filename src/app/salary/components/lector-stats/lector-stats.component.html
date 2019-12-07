@@ -6,8 +6,17 @@
       <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
       <p>{{lecStat.maxCount}}</p>
     </div>
-    <div class="graph" *ngIf="lecStat">
-      <app-chart [minCount]="lecStat.minCount" [maxCount]="lecStat.maxCount" [title]="options[index]" ></app-chart>
+    <div class="graph" *ngIf="index !== undefined && lecStat.maxCount !== undefined">
+      <div [ngSwitch]="index">
+        <div *ngSwitchCase="index === 0 ">
+          <app-chart [index]="index"[title]="engOpt[index]">
+          </app-chart>
+        </div>
+        <div *ngSwitchCase="index === 1 ">
+          <app-chart [index]="index"[title]="engOpt[index]">
+          </app-chart>
+        </div>
+      </div>
     </div>
     <div class="less">
       <h4>הכי מעט {{options[index]}}:</h4>
@@ -26,7 +35,7 @@
         <p>{{lecStat.maxCount}}</p>
       </div>
       <div class="graph">
-        <app-chart [minCount]="lecStat.minCount" [maxCount]="lecStat.maxCount" [index]="index" [title]="options[index]" ></app-chart>
+        <!-- <canvas id="barChart" width="400" height="400"></canvas> -->
       </div>
       <div class="less">
         <h4>הכי הרבה הגשות לא בזמן</h4>
