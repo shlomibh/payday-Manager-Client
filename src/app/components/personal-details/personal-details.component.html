@@ -51,5 +51,6 @@
         </mat-form-field>
       </div>
       <button mat-raised-button type="submit">עדכן פרטים</button>
+      <div *ngIf="!checkValid">הזנת פרטים שגויים</div>
     </form>
   </mat-card>

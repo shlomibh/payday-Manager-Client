@@ -27,11 +27,11 @@ export class PersonalDetailsComponent implements OnInit {
   departSelected;
   currentUser;
   userFromDb: Employee;
-
+  checkValid = true;
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthenticationService,
-    private lecService: LectorService,
   ) {
     this.updateEmployeeForm = fb.group({
       email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
@@ -48,7 +48,7 @@ export class PersonalDetailsComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser();
     console.log(this.currentUser.id);
-    this.lecService.getUserDetails(this.currentUser.id).subscribe(
+    this.authService.getUserDetails(this.currentUser.id).subscribe(
       user => {
         this.userFromDb = user;
         console.log(this.userFromDb);
@@ -121,11 +121,14 @@ export class PersonalDetailsComponent implements OnInit {
       };
       console.log(employee);
       this.authService.update(employee).subscribe(
-
+        user => {
+          console.log(user);
+          this.router.navigate(['']);
+        }
       );
     } else {
       console.log('else');
-
+      this.checkValid = false;
 
     }
 
