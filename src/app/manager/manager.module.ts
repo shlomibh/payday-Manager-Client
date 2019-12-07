@@ -5,12 +5,14 @@ import { ManagerRoutingModule } from './manager-routing.module';
 import { SubmitHeaderComponent } from './submit-header/submit-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { LecShiftsContainerComponent } from './lec-shifts-container/lec-shifts-container.component';
 
 
 @NgModule({
   declarations: [
     SubmitShiftsPageComponent,
-    SubmitHeaderComponent
+    SubmitHeaderComponent,
+    LecShiftsContainerComponent
   ],
   imports: [
     CommonModule,

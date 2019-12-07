@@ -18,13 +18,5 @@ export class LectorService {
   getLectorsListOfDepart(id: string) {
     return this.http.get<any>(`/api/users/users-department/${id}`);
   }
-
-  getUserDetails(id: string) {
-    return this.http.post<any>(`/api/users/user/${id}`, { user: id });
-  }
-
-  updateUser(user: Employee) {
-    return this.http.post<any>(`/api/users/update-user`, { user });
-  }
-
+  
 }

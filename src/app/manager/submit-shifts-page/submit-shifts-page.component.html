@@ -1,4 +1,4 @@
 <app-submit-header [lectors]="lectors" (dataEE)="searchCompleted($event)"></app-submit-header>
 <br>
-<app-shifts-container *ngIf="choosenLectorId !== undefined; no-choose" [currentUserId]="choosenLectorId" [date]="choosenDate"></app-shifts-container>
-<ng-template>לא נבחר מרצה לתצוגה</ng-template>
+<app-shifts-container #shiftCont *ngIf="choosenLectorId !== undefined; nochoose" [currentUserId]="choosenLectorId" [date]="choosenDate"></app-shifts-container>
+<ng-template #nochoose>לא נבחר מרצה לתצוגה</ng-template>

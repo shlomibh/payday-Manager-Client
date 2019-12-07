@@ -1,16 +1,16 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ShiftService } from 'src/app/services/shift.service';
-import { Shift } from 'src/app/models/shift.model';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Shift } from 'src/app/models/shift.model';
 import { IDate } from 'src/app/models/date.model';
+import { ShiftService } from 'src/app/services/shift.service';
 import { AuthenticationService } from 'src/app/services';
 
 @Component({
-  selector: 'app-shifts-container',
-  templateUrl: './shifts-container.component.html',
-  styleUrls: ['./shifts-container.component.css']
+  selector: 'app-lec-shifts-container',
+  templateUrl: './lec-shifts-container.component.html',
+  styleUrls: ['./lec-shifts-container.component.css']
 })
-export class ShiftsContainerComponent implements OnInit, OnDestroy {
+export class LecShiftsContainerComponent implements OnInit {
   subscriptions: Subscription[] = [];
   shifts: Shift[];
   allSubmitted: boolean = true;
@@ -48,7 +48,7 @@ export class ShiftsContainerComponent implements OnInit, OnDestroy {
   refresh() {
     this.ngOnDestroy();
     this.shifts = undefined;
-    this.ngOnInit();    
+    this.ngOnInit();
   }
 
   updateDate(dateFromSelector: IDate) {

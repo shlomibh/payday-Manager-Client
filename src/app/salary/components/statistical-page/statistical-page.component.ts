@@ -44,6 +44,7 @@ export class StatisticalPageComponent implements OnInit {
     this.statsService.getStatsPerMonth(data.type, data.date).subscribe(
       (dataFromDb: any) => this.depData = dataFromDb
     );
+    console.log('department event');
     this.containerComp.refresh();
   }
 

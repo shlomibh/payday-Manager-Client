@@ -8,32 +8,12 @@ import { Chart } from 'chart.js';
 export class LectorStatsComponent implements OnInit {
   @Input() lecStat;
   @Input() index;
-  cancelChart = [];
-  sickChart = [];
   options = ['ביטול שיעור', 'מחלה', 'חופש', 'הגשת דוח בזמן'];
   engOpt = ['cancel', 'sick', 'dayoff', 'report'];
 
   constructor() { }
 
   ngOnInit() {
-    // switch (this.index) {
-    //   case 0: {
-    //     this.cancelChart = setChart('cancelChart');
-    //     break;
-    //   }
-    //   case 1: {
-    //     this.sickChart = setChart('sickChart');
-    //     break;
-    //   }
-    //   default: console.log(this.index);
-    // }
-    if (this.index === 0) {
-      this.cancelChart = setChart('cancelChart');
-    }
-    else if (this.index === 1) {
-      this.sickChart = setChart('sickChart');
-
-    }
   }
 
 }

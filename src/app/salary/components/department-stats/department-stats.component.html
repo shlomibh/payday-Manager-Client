@@ -1,31 +1,17 @@
-<mat-card>
+<mat-card *ngIf="depStat !== undefined">
   <div class="container" *ngIf="index !== 3; else inTime">
     <div class="best">
       <h4>הכי הרבה {{options[index]}}</h4>
       <h6>מחלקה: {{depStat.maxID}} </h6>
       <p>{{depStat.maxCount}}</p>
     </div>
-    <div class="graph">
-      <div *ngIf="index === 0">
-        <p>{{index}}</p>
-      <canvas id="barChart0" width="400" height="400"></canvas>
+    <div class="graph" *ngIf="index !== undefined && depStat.maxCount !== undefined">
+      <div class="maximum">
+          <h1>{{(depStat.maxCount / (depStat.maxCount + depStat.minCount)).toFixed(1)*100}}%</h1>
       </div>
-      <div *ngIf="index === 1">
-        <p>{{index}}</p>
-          <canvas id="barChart1" width="400" height="400"></canvas>
-      </div>  
-      <div *ngIf="index === 2">
-          <p>{{index}}</p>
-        <canvas id="barChart2" width="400" height="400"></canvas>
-        </div>
-        <div *ngIf="index === 3">
-          <p>{{index}}</p>
-            <canvas id="barChart3" width="400" height="400"></canvas>
-        </div>    
-        <div *ngIf="index === 4">
-            <p>{{index}}</p>
-              <canvas id="barChart4" width="400" height="400"></canvas>
-          </div>  
+      <div class="minimum">
+          <h1>{{(depStat.minCount / (depStat.maxCount + depStat.minCount)).toFixed(1)*100}}%</h1>
+      </div>
     </div>
     <div class="less">
       <h4>הכי מעט {{options[index]}}:</h4>
@@ -39,10 +25,15 @@
       <div class="best">
         <h4>הכי הרבה הגשות בזמן</h4>
         <h6>מחלקה: {{depStat.minID}} </h6>
-        <p>{{depStat.minCount}}</p>
+        <p>{{depStat.maxCount}}</p>
       </div>
-      <div class="graph">
-        <canvas id="barChart" width="400" height="400"></canvas>
+      <div class="graph" *ngIf="index !== undefined && depStat.maxCount !== undefined">
+        <div class="maximum">
+            <h1>{{(depStat.maxCount / (depStat.maxCount + depStat.minCount)).toFixed(1)*100}}%</h1>
+          </div>
+        <div class="minimum">
+            <h1>{{(depStat.minCount / (depStat.maxCount + depStat.minCount)).toFixed(1)*100}}%</h1>
+          </div>
       </div>
       <div class="less">
         <h4>הכי הרבה הגשות לא בזמן</h4>

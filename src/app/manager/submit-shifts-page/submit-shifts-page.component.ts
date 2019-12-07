@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LectorService } from 'src/app/services/lector.service';
 import { AuthenticationService } from 'src/app/services';
 import { IDate } from 'src/app/models/date.model';
@@ -9,11 +9,13 @@ import { IDate } from 'src/app/models/date.model';
   styleUrls: ['./submit-shifts-page.component.css']
 })
 export class SubmitShiftsPageComponent implements OnInit {
+  @ViewChild('shiftCont', {static: false}) ShiftsContainer;
   id: string;
   lectors;
   checked = false;
   choosenLectorId: string;
   choosenDate: IDate;
+  countClick = 0;
 
   constructor(
     private lectorService: LectorService,
@@ -24,16 +26,22 @@ export class SubmitShiftsPageComponent implements OnInit {
     this.id = this.authService.getCurrentUser().id;
     this.lectorService.getLectorsListOfDepart(this.id).subscribe(
       data => {
-        this.lectors = data;
-        console.log('lectors');
-        
+        this.lectors = data;        
       }
     );
   }
 
   searchCompleted(data){
+    this.countClick = this.countClick +1;
+    console.log(data);
     this.choosenLectorId = data.lector;
     this.choosenDate = data.date;
     this.checked = true;
+    if(this.countClick > 1)
+      {
+        this.ShiftsContainer.currentUserId = this.choosenLectorId;
+        this.ShiftsContainer.date = this.choosenDate;
+        this.ShiftsContainer.refresh();
+      }
   }
 }

@@ -45,8 +45,8 @@ export class AuthenticationService {
     }
 
     getUserDetails(id: String) {
-        return this.http.post<any>(`/api/users/user/${id}`, { user: id });
-      }
+        return this.http.get<any>(`/api/users/user/${id}`);
+    }
 
     update(employee: Employee) {
         return this.http.post<any>(`/api/users/update-user`, {employee});

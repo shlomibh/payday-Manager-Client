@@ -2,25 +2,21 @@
   <div class="container" *ngIf="index !== 3; else inTime">
     <div class="best">
       <h4>הכי הרבה {{options[index]}}</h4>
-      <h4>שם : {{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
+      <h4>{{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
       <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
       <p>{{lecStat.maxCount}}</p>
     </div>
     <div class="graph" *ngIf="index !== undefined && lecStat.maxCount !== undefined">
-      <div [ngSwitch]="index">
-        <div *ngSwitchCase="index === 0 ">
-          <app-chart [index]="index"[title]="engOpt[index]">
-          </app-chart>
+        <div class="maximum">
+            <h1>{{(lecStat.maxCount / (lecStat.maxCount + lecStat.minCount)).toFixed(1)*100}}%</h1>
         </div>
-        <div *ngSwitchCase="index === 1 ">
-          <app-chart [index]="index"[title]="engOpt[index]">
-          </app-chart>
+        <div class="minimum">
+            <h1>{{(lecStat.minCount / (lecStat.maxCount + lecStat.minCount)).toFixed(1)*100}}%</h1>
         </div>
-      </div>
     </div>
     <div class="less">
-      <h4>הכי מעט {{options[index]}}:</h4>
-      <h4>שם: {{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
+      <h4>הכי מעט {{options[index]}}</h4>
+      <h4>{{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
       <h6>מחלקה: {{lecStat.minUser.department}} </h6>
       <p>{{lecStat.minCount}}</p>
     </div>
@@ -30,16 +26,21 @@
     <div class="container">
       <div class="best">
         <h4>הכי הרבה הגשות בזמן</h4>
-        <h4>שם : {{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
+        <h4>{{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
         <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
         <p>{{lecStat.maxCount}}</p>
       </div>
       <div class="graph">
-        <!-- <canvas id="barChart" width="400" height="400"></canvas> -->
+          <div class="maximum">
+              <h1>{{(lecStat.maxCount / (lecStat.maxCount + lecStat.minCount)).toFixed(1)*100}}%</h1>
+          </div>
+          <div class="minimum">
+              <h1>{{(lecStat.minCount / (lecStat.maxCount + lecStat.minCount)).toFixed(1)*100}}%</h1>
+          </div>     
       </div>
       <div class="less">
         <h4>הכי הרבה הגשות לא בזמן</h4>
-        <h4>שם: {{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
+        <h4>{{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
         <h6>מחלקה: {{lecStat.minUser.department}} </h6>
         <p>{{lecStat.minCount}}</p>
       </div>

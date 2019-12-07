@@ -13,3 +13,18 @@ mat-card {
   flex-direction: column;
   align-items: center;
 }
+
+.graph {
+  display: flex;
+  justify-content: space-between;
+  height: 300px;
+  width: 300px;
+}
+
+.maximum {
+  color: green;
+}
+
+.minimum {
+  color: red;
+}
