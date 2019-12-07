@@ -2,7 +2,7 @@ export interface Employee {
     _id?: string;
     username: string;
     email: string;
-    password: string;
+    password?: string;
     firstName: string;
     lastName: string;
     id: string;

@@ -20,11 +20,11 @@ export class LectorService {
   }
 
   getUserDetails(id: string) {
-    return this.http.get<any>(`/api/users/user/${id}`);
+    return this.http.post<any>(`/api/users/user/${id}`, { user: id });
   }
 
   updateUser(user: Employee) {
-    return this.http.post<any>(`/api/users/update-user`, {user});
+    return this.http.post<any>(`/api/users/update-user`, { user });
   }
 
 }

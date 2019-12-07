@@ -33,29 +33,35 @@ export class PersonalDetailsComponent implements OnInit {
     private authService: AuthenticationService,
     private lecService: LectorService,
   ) {
-    this.currentUser = this.authService.getCurrentUser();
-    console.log(this.currentUser.id);
-    this.lecService.getUserDetails(this.currentUser).subscribe(
-      user => {
-        this.userFromDb = user;
-        console.log(this.userFromDb);
-        this.updateEmployeeForm = fb.group({
-          email: [{ value: this.userFromDb.email, disabled: true }, [Validators.required, Validators.email]],
-          username: [{ value: this.userFromDb.username, disabled: true }, [Validators.required, Validators.minLength(4)]],
-          // password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[a-zA-Z0-9]*[A-Z]+[a-zA-Z0-9]*')]],
-          firstName: [{ value: this.userFromDb.firstName, disabled: true }, [Validators.required, Validators.minLength(2)]],
-          lastName: [{ value: this.userFromDb.lastName, disabled: true }, [Validators.required, Validators.minLength(2)]],
-          id: [{ value: this.userFromDb.id, disabled: true }, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-          telephone: [{ value: this.userFromDb.phoneNumber }, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-          role: [{ value: this.userFromDb.role }, [Validators.required]],
-          department: [{ value: this.userFromDb.department}, [Validators.required]],
-        });
-      }
-    );
+    this.updateEmployeeForm = fb.group({
+      email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
+      username: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(4)]],
+      firstName: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(2)]],
+      lastName: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(2)]],
+      id: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      telephone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      role: ['', [Validators.required]],
+      department: ['', [Validators.required]],
+    });
   }
 
   ngOnInit() {
-
+    this.currentUser = this.authService.getCurrentUser();
+    console.log(this.currentUser.id);
+    this.lecService.getUserDetails(this.currentUser.id).subscribe(
+      user => {
+        this.userFromDb = user;
+        console.log(this.userFromDb);
+      });
+    this.updateEmployeeForm.controls['email'].setValue('shadi@walla.com');
+    this.updateEmployeeForm.controls['username'].setValue('shadi');
+    this.updateEmployeeForm.controls['firstName'].setValue('שאדי');
+    this.updateEmployeeForm.controls['lastName'].setValue('שאדי');
+    this.updateEmployeeForm.controls['id'].setValue('111111111');
+    this.updateEmployeeForm.controls['telephone'].setValue('0987654321');
+    this.updateEmployeeForm.controls['role'].setValue('lector');
+    this.updateEmployeeForm.controls['department'].setValue('software');
+    console.log(this.updateEmployeeForm)
   }
 
 
@@ -96,25 +102,32 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    const credentials = this.updateEmployeeForm.value;
-    const employee: Employee = {
-      username: credentials.username,
-      email: credentials.email,
-      password: credentials.password,
-      firstName: credentials.firstName,
-      lastName: credentials.lastName,
-      id: credentials.id,
-      phoneNumber: credentials.telephone,
-      role: credentials.role,
-      department: credentials.department
-    };
-    this.authService.register(employee).subscribe(
-      employee => {
-        console.log(employee);
-        alert('העובד נוסף בהצלחה');
-        this.updateEmployeeForm.reset();
-      }
-    );
+    console.log(this.updateEmployeeForm);
+    if (
+      this.telephoneControl.valid
+      && this.roleControl.valid
+      && this.departmentControl.valid
+    ) {
+      console.log(this.updateEmployeeForm.value);
+      const employee: Employee = {
+        username: this.usernameControl.value,
+        email: this.emailControl.value,
+        firstName: this.firstNameControl.value,
+        lastName: this.lastNameControl.value,
+        id: this.idControl.value,
+        phoneNumber: this.telephoneControl.value,
+        role: this.roleControl.value,
+        department: this.departmentControl.value
+      };
+      console.log(employee);
+      this.authService.update(employee).subscribe(
+
+      );
+    } else {
+      console.log('else');
+
+
+    }
 
   }
 }

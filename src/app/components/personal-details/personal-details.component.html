@@ -1,1 +1,55 @@
-<p>personal-details works!</p>
+<mat-card>
+    <form [formGroup]="updateEmployeeForm" class="update-employee-form" (ngSubmit)="onSubmit()">
+      <h1> עדכון פרטים אישיים </h1>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="כתובת מייל" type="email" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="שם משתמש" type="text" formControlName="username">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="שם פרטי" type="text" formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="שם משפחה" type="text" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="תעודת זהות" type="tel" formControlName="id">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="טלפון" type="tel" formControlName="telephone" requried>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>בחר תפקיד</mat-label>
+          <mat-select [(value)]="roleSelected" formControlName="role" requried>
+            <mat-option value="lector">מרצה</mat-option>
+            <mat-option value="manager">ראש מחלקה</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field >
+          <mat-label>בחר מחלקה</mat-label>
+          <mat-select [(value)]="departSelected" formControlName="department" requried>
+            <mat-option value="biology">ביולוגיה</mat-option>
+            <mat-option value="software">תוכנה</mat-option>
+            <mat-option value="industry">תעשייה וניהול</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit">עדכן פרטים</button>
+    </form>
+  </mat-card>

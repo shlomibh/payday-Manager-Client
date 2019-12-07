@@ -44,6 +44,10 @@ export class AuthenticationService {
         this.currentUserSubject.next(null);
     }
 
+    update(employee: Employee) {
+        return this.http.post<any>(`/api/users/update-user`, {employee});
+    }
+
     getCurrentUser() {
         return JSON.parse(localStorage['currentUser']);
     }
