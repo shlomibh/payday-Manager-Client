@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User';
 import { map } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
+import { Employee } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class LectorService {
 
   getUserDetails(id: string) {
     return this.http.get<any>(`/api/users/user/${id}`);
+  }
+
+  updateUser(user: Employee) {
+    return this.http.post<any>(`/api/users/update-user`, {user});
   }
 
 }
