@@ -1,3 +1,5 @@
-<app-date-selector (dateEE)="shiftContainer.updateDate($event)"></app-date-selector>
+<app-date-selector (dateEE)="shiftContainer.updateDate($event)"></app-date-selector> 
 <br>
 <app-shifts-container #shiftContainer [currentUserId]="currentUser.id" [date]="date"></app-shifts-container>
+<!--"shifts-container"  ״app-date-selectorמשתמש בקומפוננטות ״ html-ה 
+ <--- בו היא מציגה למשתמש אפשרות של בחירת תאריך ואז היא מציגה את כל המשמרות של אותו משתמש לפי החודש והשנה שהוא בחר לפי הסדר

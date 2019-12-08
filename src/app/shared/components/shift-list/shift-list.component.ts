@@ -10,6 +10,7 @@ import { IDate } from 'src/app/models/date.model';
   templateUrl: './shift-list.component.html',
   styleUrls: ['./shift-list.component.css']
 })
+// הקומפוננטה שמחשבת שעות עבודה,ימי מחלה,חופש,ביטול שיעור ושעות נוספות
 export class ShiftListComponent implements OnInit, OnDestroy {
 
   @Input() shifts: Shift[];
@@ -17,9 +18,9 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   duration: number[] = [0, 0];
   extraHours: number[] = [0, 0];
-  canceledCounter = 0;
-  dayoffCounter = 0;
-  sickCounter = 0;
+  canceledCounter = 0; // סוכם את כמות ביטולי שיעור
+  dayoffCounter = 0;// סוכם את כמות ימי החוםש
+  sickCounter = 0;// סוכם את כמות ימי המחלה
   dailyDuration: number[] = [0, 0];
   date: string;
   dateToSend: IDate;

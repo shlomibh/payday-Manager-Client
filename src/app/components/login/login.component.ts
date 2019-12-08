@@ -4,14 +4,14 @@ import { first } from "rxjs/operators";
 import { AlertService, AuthenticationService } from "../../services";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
+//קומפוננטה של התחברות המשתמש
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm: FormGroup; 
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -28,8 +28,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/"]);
     }
   }
-
-  ngOnInit() {
+//       שם משתמש וסיסמא בודקת ולידציה של תקינות הכתיבה(השם משתמש הוא בעצם אימייל והיא בודקת אם כתב לפי התבנית המקובלת:Input הפעלת הקומפוננה שמקבלת  
+  //וסיסמא שבנויה מאות גדולה באנגלית חובה ואות קטנה באנגלית ומספרים
+ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
