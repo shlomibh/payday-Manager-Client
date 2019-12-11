@@ -60,7 +60,7 @@ export class DateSelectorComponent implements OnInit {
     this.date.setValue(ctrlValue);// formשולח את הערך המתקבל ל ל
     datepicker.close(); //סגירת חלון בחירת החודש והשנה ע״י המשתמש
   }
-// ***
+// מציג את המשמרות אותם בחר המשתמש לפי התאריך
   showShifts() {
     if (this.date.value["_isValid"]) { // בודק האם המשתמש אכן בחר תאריך
       const date = new Date(this.date.value["_d"]).toLocaleDateString(); //   והופך אותו למחרוזתDate  יוצר משתנה מסוג 
