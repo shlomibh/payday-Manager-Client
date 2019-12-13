@@ -30,6 +30,9 @@ export class StatisticalPageComponent implements OnInit {
     } else if(this.route.snapshot.url[0].path === 'departmentStatistics') {
       this.isDepartStats = true;
     }
+    this.statsService.getLectorsStats().subscribe(
+      data => console.log(data)
+    );
   }
 
   updateLecData(data: any) {
