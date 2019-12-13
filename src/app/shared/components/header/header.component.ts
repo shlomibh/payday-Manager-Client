@@ -8,7 +8,6 @@ import { AuthenticationService } from 'src/app/services';
 })
 export class HeaderComponent implements OnInit {
   @Input() currentUser;
-
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
