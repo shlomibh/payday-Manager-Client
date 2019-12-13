@@ -47,21 +47,19 @@ export class PersonalDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser();
-    console.log(this.currentUser.id);
     this.authService.getUserDetails(this.currentUser.id).subscribe(
       user => {
         this.userFromDb = user;
-        console.log(this.userFromDb);
+        this.updateEmployeeForm.controls['email'].setValue(this.userFromDb.email);
+        this.updateEmployeeForm.controls['username'].setValue(this.userFromDb.username);
+        this.updateEmployeeForm.controls['firstName'].setValue(this.userFromDb.firstName);
+        this.updateEmployeeForm.controls['lastName'].setValue(this.userFromDb.lastName);
+        this.updateEmployeeForm.controls['id'].setValue(this.userFromDb.id);
+        this.updateEmployeeForm.controls['telephone'].setValue(this.userFromDb.phoneNumber);
+        this.updateEmployeeForm.controls['role'].setValue(this.userFromDb.role);
+        this.updateEmployeeForm.controls['department'].setValue(this.userFromDb.department);
       });
-    this.updateEmployeeForm.controls['email'].setValue('shadi@walla.com');
-    this.updateEmployeeForm.controls['username'].setValue('shadi');
-    this.updateEmployeeForm.controls['firstName'].setValue('שאדי');
-    this.updateEmployeeForm.controls['lastName'].setValue('שאדי');
-    this.updateEmployeeForm.controls['id'].setValue('111111111');
-    this.updateEmployeeForm.controls['telephone'].setValue('0987654321');
-    this.updateEmployeeForm.controls['role'].setValue('lector');
-    this.updateEmployeeForm.controls['department'].setValue('software');
-    console.log(this.updateEmployeeForm)
+
   }
 
 

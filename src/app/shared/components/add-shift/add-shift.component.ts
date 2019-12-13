@@ -127,10 +127,13 @@ export class AddShiftComponent implements OnInit {
         shift => {
           this.shiftForm.reset();
           this.addClickedEE.emit(true);
+        },
+        error => {
+          alert("יש כפילות במשמרות / משמרות חופפות");
         }
       );
     } else {
-      console.log('form invalid');  // need to set pop-up error
+      alert("פרטים לא נכונים / לא מלאים");
     }
 
   }
