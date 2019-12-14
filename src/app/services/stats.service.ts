@@ -21,4 +21,8 @@ export class StatsService {
           return data;
         }));
     }
+
+    getLectorsStatsList() {
+      return this.http.get(`/api/statistics/lectors-stats`);
+    }
 }
