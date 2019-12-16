@@ -1,6 +1,6 @@
-export class User {
-    id: string;
-    email: string;
-    role: string; 
-    token: string;
+export class User { // מודל של משתמש
+    id: string; //תעודת זהות
+    email: string; //אימייל
+    role: string; //תפקיד
+    token: string; //jwt
 }

@@ -1,0 +1,41 @@
+<div class="title">
+    <h2>מעקב אחרי דיווח שעות של מרצה</h2>
+</div>
+<mat-card class="container">
+  <div class="in-time">
+    <div>
+      <h3>הגשות בזמן</h3>
+    </div>
+    <div *ngIf="inTime !== undefined">
+      <div *ngIf="inTime.length > 0">
+        <mat-card class="lector" *ngFor="let lector of inTime">
+            <a href="mailto:'lector.email'">
+              <button mat-button>שלח תזכורת</button>
+            </a>
+            <span>{{lector.firstName}} {{lector.lastName}}</span>
+          </mat-card>      </div>
+      <div *ngIf="inTime.length === 0">
+        No Content
+      </div>
+    </div>
+  </div>
+  <div class="delayed">
+    <div>
+      <h3>הגשות מאוחרות</h3>
+    </div>
+    <div *ngIf="delayed !== undefined">
+      <div *ngIf="delayed.length > 0">
+        <mat-card class="lector" *ngFor="let lector of delayed">
+          <a href="mailto:'lector.email'">
+            <button mat-button>שלח תזכורת</button>
+          </a>
+          <span>{{lector.firstName}} {{lector.lastName}}</span>
+        </mat-card>
+      </div>
+      <div *ngIf="delayed.length === 0">
+        No Content
+      </div>
+    </div>
+  </div>
+
+</mat-card>

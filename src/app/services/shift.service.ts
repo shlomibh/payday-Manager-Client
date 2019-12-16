@@ -16,37 +16,40 @@ export class ShiftService {
 
 
 
-get(id: String): Observable < Shift[] > {
-  return this.http.get(`/api/shifts/${id}`)
-    .pipe(map((data: Shift[]) => {
-      return data;
-    }));
-}
-
-getPerMonth(id: String, date: IDate): Observable < Shift[] > {
-  console.log(date); 
-  return this.http.get(`/api/shifts/${id}/m=${date.month}/y=${date.year}`,)
-    .pipe(map((data: Shift[]) => {
-      return data;
-    }));
-}
-
-post(shift: Shift): Observable < Shift > {
-  return this.http.post(`/api/shifts/${shift.employeeId}`, { shift })
-    .pipe(map(
-      (data: Shift) => {
+  get(id: String): Observable<Shift[]> {
+    return this.http.get(`/api/shifts/${id}`)
+      .pipe(map((data: Shift[]) => {
         return data;
-      }
-    ));
-}
+      }));
+  }
 
-submitShifts(employeeId: string, date: IDate) {
-  console.log(date);
-  return this.http.post(`/api/shifts/submit/${employeeId}`, { employeeId, date });
-}
+  getPerMonth(id: String, date: IDate): Observable<Shift[]> {
+    console.log(date);
+    return this.http.get(`/api/shifts/${id}/m=${date.month}/y=${date.year}`)
+      .pipe(map((data: Shift[]) => {
+        return data;
+      }));
+  }
 
-delete (shiftId: String) {
-  return this.http.delete(`/api/shifts/${shiftId}`);
-}
+  post(shift: Shift): Observable<Shift> {
+    return this.http.post(`/api/shifts/${shift.employeeId}`, { shift })
+      .pipe(map(
+        (data: Shift) => {
+          return data;
+        },
+        error => {
+          return error;
+        }
+      ));
+  }
+
+  submitShifts(employeeId: string, date: IDate) {
+    console.log(date);
+    return this.http.post(`/api/shifts/submit/${employeeId}`, { employeeId, date });
+  }
+
+  delete(shiftId: string) {
+    return this.http.delete(`/api/shifts/${shiftId}`);
+  }
 
 }

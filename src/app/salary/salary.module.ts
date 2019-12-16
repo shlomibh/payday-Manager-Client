@@ -10,6 +10,7 @@ import { LectorStatsComponent } from './components/lector-stats/lector-stats.com
 import { DepartmentStatsComponent } from './components/department-stats/department-stats.component';
 import { StatsContainerComponent } from './components/stats-container/stats-container.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { TimeSubmittedComponent } from './components/time-submitted/time-submitted.component';
 
 
 
@@ -21,7 +22,8 @@ import { ChartComponent } from './components/chart/chart.component';
     LectorStatsComponent,
     DepartmentStatsComponent,
     StatsContainerComponent,
-    ChartComponent
+    ChartComponent,
+    TimeSubmittedComponent
   ],
   imports: [
     CommonModule,

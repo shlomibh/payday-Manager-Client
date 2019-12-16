@@ -9,7 +9,7 @@
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['']">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" *ngIf="currentUser.role !== 'salary'" >
+      <li class="nav-item" *ngIf="currentUser.role !== 'salary'">
         <a class="nav-link" [routerLink]="['schedule']">Fill Report</a>
       </li>
       <li class="nav-item" *ngIf="currentUser.role !== 'salary'">
@@ -27,9 +27,18 @@
       <li class="nav-item" *ngIf="currentUser.role === 'salary' || currentUser.role === 'admin' ">
         <a class="nav-link" [routerLink]="['salary/departmentStatistics']">Department Stats</a>
       </li>
+      <li class="nav-item" *ngIf="currentUser.role === 'salary' || currentUser.role === 'admin' ">
+        <a class="nav-link" [routerLink]="['salary/timeSubmitted']">Time Submitted</a>
+      </li>
     </ul>
     <span class="navbar-text">
+      <a class="nav-link" [routerLink]="['login']" (click)="logout()">Logout</a>
 
     </span>
   </div>
 </nav>
+<!--קומפננטה האחראית על הצגת התפריט לפי הרשאות-->
+<!--כל משתמש ישלו תפקיד-מרצה,ראש מחלקה,מנהלת שכר ולכל אחד דפים בהתאם-->
+<!--    הינו המתכנת שהוא רואה את כל הדפים admin -->
+<!--salary מנהלת שכר-->
+<!--manager ראש מחלקה-->

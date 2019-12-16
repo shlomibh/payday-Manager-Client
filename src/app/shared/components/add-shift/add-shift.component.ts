@@ -129,19 +129,22 @@ export class AddShiftComponent implements OnInit {
     }
     return false;
   }
-// כשהמשתמש לוחץ על ״הוסף דיווח״ זה שולח לשרת את הדיווח מציג למשתמש ונותן לו עוד אופציה להוסיף דיווח
+// כשהמשתמש לוחץ על ״הוסף דיווח״ זה שולח לשרת את הדיווח עם כל הפונקציונאליות שלעיל
   onSubmit() {
-    const shift = this.createShift();
+    const shift = this.createShift(); //יוצר דיווח
     console.log(shift);
-    if (shift) {
-      this.shiftService.post(shift as Shift).subscribe(
-        shift => {
+    if (shift) { //שליחה לשרת
+      this.shiftService.post(shift as Shift).subscribe( 
+        shift => { // מעדכן את הדף לאחר הדיווח ונותן עד אופציה של דיווח
           this.shiftForm.reset();
           this.addClickedEE.emit(true);
+        },
+        error => { // הדפסת הודעות שגיאה בהתאם ל
+          alert("יש כפילות במשמרות / משמרות חופפות");
         }
       );
     } else {
-      console.log('form invalid');  // need to set pop-up error
+      alert("פרטים לא נכונים / לא מלאים");
     }
 
   }
