@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/services';
 import { Employee } from 'src/app/models/employee.model';
 import { LectorService } from 'src/app/services/lector.service';
 
-class Model {
+class Model {   //מודל של הטופס-כאשר אנו משתמשים בטופס אנחנו צריכים ליצור לו מודל-האלמנטים ניבחרו באופן אקראי,ניתן לרשום את כל האלמנטים הקיימים
   email = '';
   username = '';
   role = '';
@@ -17,22 +17,23 @@ class Model {
   templateUrl: './personal-details.component.html',
   styleUrls: ['./personal-details.component.css']
 })
+//הקומפוננטה האחראית על הדף של ״פרטים אישים״
 export class PersonalDetailsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   model = new Model();
-  updateEmployeeForm: FormGroup;
-  errors: {};
-  errorStatus: number;
-  roleSelected;
-  departSelected;
-  currentUser;
-  userFromDb: Employee;
-  checkValid = true;
+  updateEmployeeForm: FormGroup; //טופס הדף
+  //errors: {};
+  //errorStatus: number;
+  //roleSelected;
+  //departSelected;
+  currentUser; //המשתמש הנוכחי
+  userFromDb: Employee; //משתמש הקיים בבסיס הנתונים
+  checkValid = true; // אם הולידציה נכונה או לא
   constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private authService: AuthenticationService,
-  ) {
+    private fb: FormBuilder, // טופס הדף
+    private router: Router,// נתב
+    private authService: AuthenticationService, // בדיקת אימות
+  ) {  // הצגת הטופס עם כל פרטיו תוך בדיקה שהשדות לא ריקים ואופן הצגתם חוקי לפי כל אלמנט
     this.updateEmployeeForm = fb.group({
       email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
       username: [{ value: '', disabled: true }, [Validators.required, Validators.minLength(4)]],
@@ -45,6 +46,9 @@ export class PersonalDetailsComponent implements OnInit {
     });
   }
 
+  //  שתפקידה הוא להחזיר את המשתמש הקיים getCurrentUser הפלת הקומפוננטה-מתקבל המשתמש הנוכחי לפי פונקציית 
+  //     מתקבלים כל פרטי המשתמש getUserDeatails לאחר מכן באמצעות פונקצית
+  //   כדי לשלוח לטופס את פרטי המשתמש לפי כל פרט set  שימוש ב   
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser();
     this.authService.getUserDetails(this.currentUser.id).subscribe(
@@ -62,7 +66,7 @@ export class PersonalDetailsComponent implements OnInit {
 
   }
 
-
+// קבלת פרטי המשתמש מהשרת
   get emailControl(): AbstractControl {
     return this.updateEmployeeForm.get('email');
   }
@@ -101,13 +105,13 @@ export class PersonalDetailsComponent implements OnInit {
 
   onSubmit() {
     console.log(this.updateEmployeeForm);
-    if (
+    if (                                   // בדיקה אם כל האלמנטים האלו ״חוקיים״
       this.telephoneControl.valid
       && this.roleControl.valid
       && this.departmentControl.valid
     ) {
       console.log(this.updateEmployeeForm.value);
-      const employee: Employee = {
+      const employee: Employee = {    // ערכי הפרטים הקיימים אצל העובד
         username: this.usernameControl.value,
         email: this.emailControl.value,
         firstName: this.firstNameControl.value,
@@ -118,14 +122,14 @@ export class PersonalDetailsComponent implements OnInit {
         department: this.departmentControl.value
       };
       console.log(employee);
-      this.authService.update(employee).subscribe(
+      this.authService.update(employee).subscribe(       //        הקיימת בשרת שמקבלת מספר טלפון או תפקיד או מחלקה שהזין המשתמש ומעדכנת אותם בבסיס הנתונים ושומרת אותם update שימוש בפונקציית   
         user => {
           console.log(user);
-          this.router.navigate(['']);
+          this.router.navigate(['']); //לאחר מכן מנתבת לדף הבית
         }
       );
     } else {
-      console.log('else');
+      console.log('else');  // אם יש בעיה בתקינות הפרטים שהקיש המשתמש מדפיס הודעה למשתמש ״הזנת פרטים שגויים״
       this.checkValid = false;
 
     }

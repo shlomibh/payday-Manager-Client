@@ -20,7 +20,7 @@ export class ShiftComponent implements OnInit {
     this.shift.date = `${date[1]}/${date[0]}/${date[2]}`;
     this.canDelete = this.route.snapshot.url[0].path === 'schedule';
   }
-
+//מחיקת דיווח
   delete() {
     this.deleteEE.emit(this.shift._id);
   }

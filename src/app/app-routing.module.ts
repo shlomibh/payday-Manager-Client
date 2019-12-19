@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'manager', loadChildren: () => import('src/app/manager/manager.module').then(m => m.ManagerModule), canActivate: [AuthGuard] },
   { path: 'salary', loadChildren: () => import('src/app/salary/salary.module').then(m => m.SalaryModule), canActivate: [AuthGuard] },
 
-  // otherwise redirect to home
+  // אחרת מנתב את המשתמש לדף הבית
   { path: '**', redirectTo: '' }
 ];
 
