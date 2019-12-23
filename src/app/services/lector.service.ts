@@ -18,5 +18,9 @@ export class LectorService {
   getLectorsListOfDepart(id: string) {
     return this.http.get<any>(`/api/users/users-department/${id}`);
   }
+
+  getLectorShifts(id: string) {
+    return this.http.get<any>(`/api/shifts/lector-shifts/${id}`);
+  }
   
 }

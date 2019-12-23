@@ -1,5 +1,5 @@
 <app-shift-list *ngIf="shifts !== undefined" [shifts]="shifts" (refreshEE)="refresh()"></app-shift-list>
 <div *ngIf="currentUserRole === 'manager' || currentUserRole === 'admin'" class="submit"> 
     <button mat-button *ngIf="!allSubmitted else done" type="button" (click)="submitAll()"> אשר שעות </button>
-    <ng-template #done> כל המשמרות אושרו </ng-template>
+    <ng-template #done *ngIf="currentUserRole !== 'salary'"> כל המשמרות אושרו </ng-template>
 </div>

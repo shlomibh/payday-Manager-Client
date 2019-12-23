@@ -12,8 +12,11 @@
             <a href="mailto:'lector.email'">
               <button mat-button>שלח תזכורת</button>
             </a>
-            <span>{{lector.firstName}} {{lector.lastName}}</span>
-          </mat-card>      </div>
+            <a [routerLink]="['../shifts', lector._id]" > 
+              <span>{{lector.firstName}} {{lector.lastName}}</span> 
+            </a>
+          </mat-card>      
+        </div>
       <div *ngIf="inTime.length === 0">
         No Content
       </div>
@@ -29,7 +32,9 @@
           <a href="mailto:'lector.email'">
             <button mat-button>שלח תזכורת</button>
           </a>
-          <span>{{lector.firstName}} {{lector.lastName}}</span>
+          <a [routerLink]="['../shifts', lector._id]" > 
+            <span>{{lector.firstName}} {{lector.lastName}}</span> 
+          </a>
         </mat-card>
       </div>
       <div *ngIf="delayed.length === 0">
@@ -41,3 +46,4 @@
 </mat-card>
 <!--    של דיווחים בזמן htmlדף ה  -->
 <!--הדף יציג את השמות של מי שדיווח בזמן וצפייה בדו״ח ומי שלא דיווח בזמן גם יופיע וינתן אופציה למנהלת שכר לשלוח מייל-->
+<!--תוך צפייה בדוחות-->

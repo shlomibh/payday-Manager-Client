@@ -37,6 +37,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
+// הקומפננטה האחראית על הצגת הנתוחים סטטיסטים לפי מרצה או מחלקה לפי התאריך הניבחר
 export class SatisticsHeaderComponent implements OnInit {
   @Output() lecDataEE = new EventEmitter();
   @Output() depDataEE = new EventEmitter();

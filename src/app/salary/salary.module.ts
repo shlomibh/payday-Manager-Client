@@ -11,6 +11,7 @@ import { DepartmentStatsComponent } from './components/department-stats/departme
 import { StatsContainerComponent } from './components/stats-container/stats-container.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { TimeSubmittedComponent } from './components/time-submitted/time-submitted.component';
+import { ShiftsContainerComponent } from './components/shifts-container/shifts-container.component';
 
 
 
@@ -23,7 +24,8 @@ import { TimeSubmittedComponent } from './components/time-submitted/time-submitt
     DepartmentStatsComponent,
     StatsContainerComponent,
     ChartComponent,
-    TimeSubmittedComponent
+    TimeSubmittedComponent,
+    ShiftsContainerComponent
   ],
   imports: [
     CommonModule,

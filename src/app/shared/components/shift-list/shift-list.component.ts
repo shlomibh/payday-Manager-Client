@@ -19,7 +19,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   duration: number[] = [0, 0];// סוכם את השעות בכללי-בנוי כמערך כאשר השעות יהיו במקום הראשון והדקות יהיו במקום השני
   extraHours: number[] = [0, 0];// סוכם את השעות הנוספות-בנוי כמערך כאשר במקום הראשון יהיו השעות ובמקום השני יהיו הדקות
   canceledCounter = 0; // סוכם את כמות ביטולי שיעור
-  dayoffCounter = 0;// סוכם את כמות ימי החוםש
+  dayoffCounter = 0;// סוכם את כמות ימי החופש
   sickCounter = 0;// סוכם את כמות ימי המחלה
   dailyDuration: number[] = [0, 0];// מערך עזר לצורך חישוב השעות באופן כללי
   date: string;

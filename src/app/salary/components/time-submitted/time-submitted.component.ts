@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatsService } from 'src/app/services/stats.service';
-
+// הקומפננטה האחראית על דף הדיווחים בזמן
+//     מי דיווח בזמן ומי לא getLectorsStats מקבלת באמצעות הפונקציה  
 @Component({
   selector: 'app-time-submitted',
   templateUrl: './time-submitted.component.html',
