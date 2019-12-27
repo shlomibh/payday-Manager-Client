@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   valid: boolean = false;
   constructor(    
     private formBuilder: FormBuilder, //טופס הדף
-    private route: ActivatedRoute,
+    private route: ActivatedRoute,// נתב
     private router: Router,
     private authenticationService: AuthenticationService, // שימוש במתודה האחראית על בדיקת אימות משתמש-הסבר בפונקציה עצמה
     private alertService: AlertService // שימוש בחלון התראה כאשר ישנה שגיאה
@@ -35,7 +35,7 @@ ngOnInit() {
       username: ['', Validators.required],
       password: ['', Validators.required]
   });
-    // get return url from route parameters or default to '/'
+    // כתובת דף הבית
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
   }
 

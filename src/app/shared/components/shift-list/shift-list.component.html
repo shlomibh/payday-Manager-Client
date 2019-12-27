@@ -1,6 +1,6 @@
 <div *ngIf="shifts.length > 0 else empty">
   <app-shift *ngFor="let shift of shifts" [shift]="shift" (deleteEE)="deleteShift($event)"></app-shift>
-  <div class="details-container">
+  <div class="details-container" *ngIf="currentUser === 'lector'">
     <button mat-button (click)="submitShifts()" > אשר משמרות </button>
   </div>
   <div class="details-container">

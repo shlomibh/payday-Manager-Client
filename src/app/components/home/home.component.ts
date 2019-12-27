@@ -14,3 +14,4 @@ export class HomeComponent implements OnInit {
   
 
 }
+//    שהוא סה״כ מנתב לדפים ומציג את הדף html הקומפננטה לא מבצעת כלום כל הפעולות מתבצעות ב   

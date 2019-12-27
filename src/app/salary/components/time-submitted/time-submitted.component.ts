@@ -23,3 +23,4 @@ export class TimeSubmittedComponent implements OnInit {
   }
 
 }
+//ובאמצעותה מציגה את מי דיווח בזמן ומי לא דיווח בזמן)  getLectorsStats הקומפננטה משתמשת בפונקציה שקיימת בשרת 

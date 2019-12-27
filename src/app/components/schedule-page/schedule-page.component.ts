@@ -21,7 +21,7 @@ export class SchedulePageComponent implements OnInit {
   constructor(  
     private authService: AuthenticationService  
   ) { }
-
+// כשהקומפננטה עולה עולים האלמטים הבאים
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser(); //         getCurrentUser  קבלת המשתמש הנוכחי באמצעות פונקציית שירות      
     const date = new Date().toLocaleDateString(); // התאריך הנוכחי מהמחשב עצמו והמרתו למחרוזת

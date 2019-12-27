@@ -16,3 +16,4 @@ export class DepartmentStatsComponent implements OnInit {
   }
 
 }
+// מכיוון שהפונקציונאליות מתבצעת בשרת קומפוננטה זו רק משתמשת במערך של שמות הניתוחים סטטיסטים

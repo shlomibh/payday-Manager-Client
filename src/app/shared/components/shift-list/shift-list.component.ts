@@ -24,7 +24,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   dailyDuration: number[] = [0, 0];// מערך עזר לצורך חישוב השעות באופן כללי
   date: string;
   dateToSend: IDate;
-
+  currentUser;
   constructor(
     private shiftService: ShiftService,
     private authService: AuthenticationService
@@ -33,6 +33,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    this.authService.getCurrentUser();
     console.log(this.shifts);
     if (this.shifts.length > 0) {
       this.date = this.shifts[0].date;
@@ -125,6 +126,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
   }
 // פונקציה שמטפלת בכפתור של הראש מחלקה כאשר הוא מאשר את המשמרות שדיווח מרצה שתחתיו
   submitShifts() {
+    
     this.shifts.forEach(s => {
       if(s.lectorSubmitted ===  false || s.lectorSubmitted === undefined) { // ראש מחלקה יכול לאשר משמרות של מרצה רק אם המרצה גם אישר את הדיווחים שלו 
         s.lectorSubmitted = true;                                           //     שאומר אם המרצה אישר או לא,אם הוא יתקבל כשקר או לא קיים הוא הופך את זה לאמת באופן אוטומטי(ראש המחלקה יכול לצפות בדיווחים של מרצה גם אם המרצה לא אישר) lectorsubmitted   במידה והראש מחלקה קיבל משמרות של מרצה אך המשתנה 
@@ -135,6 +137,7 @@ export class ShiftListComponent implements OnInit, OnDestroy {
       month: new Date().getMonth()+1, // מספרי החודש מוצג מ0-11 ה+1 נועד לכלול את החודש 12
       year: new Date().getFullYear(), 
     };
+   
     this.subscriptions.push(this.shiftService.submitShifts(this.shifts[0].employeeId, this.dateToSend).subscribe( //המשמרות שנישלחו לשרת לפי חודש ושנה
       (data) => {
         if(data)

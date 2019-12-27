@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services';
 import { User } from './models/User';
-
+// הפעלת הקומפננטה הראשית שמפעילה את האפליקציה
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

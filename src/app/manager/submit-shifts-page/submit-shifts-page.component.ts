@@ -7,7 +7,7 @@ import { IDate } from 'src/app/models/date.model';
   selector: 'app-submit-shifts-page',
   templateUrl: './submit-shifts-page.component.html',
   styleUrls: ['./submit-shifts-page.component.css']
-})
+}) //קומפננטה האחראית אישור המשמרות של ראש המחלקה
 export class SubmitShiftsPageComponent implements OnInit {
   @ViewChild('shiftCont', {static: false}) ShiftsContainer;
   id: string;
@@ -21,7 +21,7 @@ export class SubmitShiftsPageComponent implements OnInit {
     private lectorService: LectorService,
     private authService: AuthenticationService
     ) { }
-
+// הצגת המרצים שתחת אותו ראש המחלקה
   ngOnInit() {
     this.id = this.authService.getCurrentUser().id;
     this.lectorService.getLectorsListOfDepart(this.id).subscribe(
@@ -30,7 +30,7 @@ export class SubmitShiftsPageComponent implements OnInit {
       }
     );
   }
-
+// רענון הדף בין מרצה למרצה
   searchCompleted(data){
     this.countClick = this.countClick +1;
     console.log(data);

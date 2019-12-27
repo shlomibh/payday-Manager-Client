@@ -4,7 +4,7 @@ import { AddEmployeePageComponent } from './components/add-employee-page/add-emp
 import { StatisticalPageComponent } from './components/statistical-page/statistical-page.component';
 import { TimeSubmittedComponent } from './components/time-submitted/time-submitted.component';
 import { ShiftsContainerComponent } from './components/shifts-container/shifts-container.component';
-
+// ניתוב הדפים הקשורים למנהלת שכר ושימוש הקומפננטות בכל דף
 const routes: Routes = [
     { path: 'addEmployee', component: AddEmployeePageComponent },
     { path: 'lectorStatistics', component: StatisticalPageComponent },

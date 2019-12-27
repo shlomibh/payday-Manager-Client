@@ -4,7 +4,7 @@ import { User } from '../models/User';
 import { map } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
 import { Employee } from '../models/employee.model';
-
+//   הקשורות למרצה httpקומפננטה של בקשות 
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +14,11 @@ export class LectorService {
     private authService: AuthenticationService,
     private http: HttpClient
   ) { }
-
+// מביא את רשימת המרצים לפי מחלקה
   getLectorsListOfDepart(id: string) {
     return this.http.get<any>(`/api/users/users-department/${id}`);
   }
-
+//מציג את משמרות המרצה
   getLectorShifts(id: string) {
     return this.http.get<any>(`/api/shifts/lector-shifts/${id}`);
   }

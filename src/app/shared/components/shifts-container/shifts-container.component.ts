@@ -50,7 +50,7 @@ export class ShiftsContainerComponent implements OnInit, OnDestroy {
     this.shifts = undefined;
     this.ngOnInit();    
   }
-
+// בחירת תאריך ע״י המשתמש ואז מרענן
   updateDate(dateFromSelector: IDate) {
     this.date = dateFromSelector;
     this.refresh();

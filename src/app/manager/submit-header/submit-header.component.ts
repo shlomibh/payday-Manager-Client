@@ -46,20 +46,20 @@ export class SubmitHeaderComponent implements OnInit {
   ngOnInit() {
     console.log(this.lectors); 
   }
-
+//בחירת שנה
   chosenYearHandler(normalizedYear: Moment) {
     const ctrlValue = this.date.value;
     ctrlValue.year(normalizedYear.year());
     this.date.setValue(ctrlValue);
   }
-
+//בחירת חודש
   chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.date.value;
     ctrlValue.month(normalizedMonth.month());
     this.date.setValue(ctrlValue);
     datepicker.close();
   }
-
+// פונקציה הקשורה לבחירת תאריך ומרצה
   showShifts() {
     console.log(this.selected); 
     if(this.selected !== undefined) {

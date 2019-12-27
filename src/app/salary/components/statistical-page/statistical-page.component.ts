@@ -4,7 +4,7 @@ import { StatsContainerComponent } from '../stats-container/stats-container.comp
 import { LectorStatsComponent } from '../lector-stats/lector-stats.component';
 import { StatsService } from 'src/app/services/stats.service';
 import { DepartmentStatsComponent } from '../department-stats/department-stats.component';
-
+//  קומפננטה המנתבת לפי הבחירה של הדף של ניתוח סטטיסטי לפי מרצה או מחלקה והבאת הנתונים ורענון הדף בהתאם
 @Component({
   selector: 'app-statistical-page',
   templateUrl: './statistical-page.component.html',

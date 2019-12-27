@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Shift } from 'src/app/models/shift.model';
 import { ActivatedRoute } from '@angular/router';
-
+// schdule-page    קומפננטה של הצגת משמרת בדף דיווח השעות תוך שימוש המנותבת לדף ה    
 @Component({
   selector: 'app-shift',
   templateUrl: './shift.component.html',
@@ -14,7 +14,7 @@ export class ShiftComponent implements OnInit {
   canDelete = true;
 
   constructor(private route: ActivatedRoute) { }
-
+//הפעלת הקומפננטה
   ngOnInit() {
     const date = this.shift.date.split('/');
     this.shift.date = `${date[1]}/${date[0]}/${date[2]}`;

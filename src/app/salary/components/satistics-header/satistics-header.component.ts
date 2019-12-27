@@ -66,13 +66,13 @@ export class SatisticsHeaderComponent implements OnInit {
     this.date.setValue(ctrlValue);
     datepicker.close();
   }
-
+// הפונקציה המתבצעת כאשר נילחץ הכפתור ״הצג סטטיסטיקה״
   showStats() {
     if (this.date.value["_isValid"]) {
       const date = new Date(this.date.value["_d"]).toLocaleDateString();
       const splitedDate = date.split('/');
       this.dateToSend = {
-        month: +splitedDate[0], // Shlomi: +splitedDate[0]
+        month: +splitedDate[0], 
         year: +splitedDate[2]
       };
       let dataToSend;

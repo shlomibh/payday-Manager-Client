@@ -1,3 +1,4 @@
 <app-satistics-header [isLecStats]="isLecStats" [isDepartStats]="isDepartStats" (lecDataEE)="updateLecData($event)" (depDataEE)="updateDepData($event)"></app-satistics-header>
 <br>
 <app-stats-container *ngIf="lecData !== undefined || depData !== undefined" [lecData]="lecData" [depData]="depData" [isLecStats]="isLecStats" [isDepartStats]="isDepartStats"></app-stats-container>
+<!--הצגת הדף בהתאם לניתוח שנבחר לפי מחלקה או מרצה-->
