@@ -28,3 +28,7 @@ mat-card {
 .minimum {
   color: red;
 }
+
+.no-result{
+  text-align: center;
+}

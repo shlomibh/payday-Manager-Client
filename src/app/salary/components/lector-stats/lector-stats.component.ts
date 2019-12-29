@@ -14,6 +14,7 @@ export class LectorStatsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.lecStat);
   }
 
 }

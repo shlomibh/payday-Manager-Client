@@ -1,4 +1,4 @@
-<mat-card *ngIf="depStat !== undefined">
+<mat-card *ngIf="depStat !== null; else noResult">
   <div class="container" *ngIf="index !== 3; else inTime">
     <div class="best">
       <h4>הכי הרבה {{options[index]}}</h4>
@@ -44,6 +44,11 @@
   </ng-template>
 </mat-card>
 
+<ng-template>
+  <div class="no-result">
+    אין נתונים להצגה
+  </div>
+</ng-template>
 <!--   של דף הסטטיסטיקה של מחלקה html דף ה -->
 
 <!--  הדף בנוי תוך שהוא מציג את השם של המחלקה שיצאה בניתוח הסטטיסטי הכי גבוהה או הכי נמוך ומציג באחוזים את הניתוח הסטטיסטי ומציג את הנתון הכי גבוהה או נמוך לפי הניתוח-->
