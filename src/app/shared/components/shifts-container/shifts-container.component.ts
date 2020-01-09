@@ -32,9 +32,7 @@ export class ShiftsContainerComponent implements OnInit, OnDestroy {
         this.shifts.forEach( shift => {
           if(shift.submitted === false) this.allSubmitted = false;
         });
-        // need on Oren Computer.
-        //  this.shifts.forEach(elem => elem.date = this.changeStringDate(elem.date)); 
-        // - checks without on Shlomi Computer 
+       
 
         this.shifts.sort((a: Shift, b: Shift) => new Date(a.date).getTime() - new Date(b.date).getTime());
       }));

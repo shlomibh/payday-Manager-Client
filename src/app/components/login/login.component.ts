@@ -45,7 +45,7 @@ ngOnInit() {
   onSubmit() {
     this.submitted = true;
 
-    if (this.loginForm.invalid) {
+    if (this.loginForm.invalid) { 
       return;
   }
 

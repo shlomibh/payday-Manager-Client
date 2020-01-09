@@ -1,9 +1,10 @@
 <mat-card *ngIf="lecStat !== null; else noResult">
   <div class="container" *ngIf="index !== 3; else inTime">
     <div class="best">
-      <h4>הכי הרבה {{options[index]}}</h4>
-      <h4>{{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
-      <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
+      <h4>:המרצה הכי גבוה לפי ניתוח סטטיסטי</h4>
+      <h5>{{options[index]}}</h5>
+      <h4>שם המרצה:{{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
+      <h6> {{lecStat.maxUser.department}} :מחלקה</h6>
       <p>{{lecStat.maxCount}}</p>
     </div>
     <div class="graph" *ngIf="index !== undefined && lecStat.maxCount !== undefined">
@@ -15,9 +16,10 @@
         </div>
     </div>
     <div class="less">
-      <h4>הכי מעט {{options[index]}}</h4>
-      <h4>{{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
-      <h6>מחלקה: {{lecStat.minUser.department}} </h6>
+      <h4>:המרצה הכי נמוך לפי ניתוח סטטיסטי</h4>
+      <h5>{{options[index]}}</h5>
+      <h4>שם המרצה:{{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
+      <h6>{{lecStat.minUser.department}} :מחלקה </h6>
       <p>{{lecStat.minCount}}</p>
     </div>
   </div>
@@ -25,7 +27,7 @@
   <ng-template #inTime>
     <div class="container">
       <div class="best">
-        <h4>הכי הרבה הגשות בזמן</h4>
+        <h4>המרצה בעל הכי נמוך הגשות בזמן</h4>
         <h4>{{lecStat.maxUser.firstName}} {{lecStat.maxUser.lastName}}</h4>
         <h6>מחלקה: {{lecStat.maxUser.department}} </h6>
         <p>{{lecStat.maxCount}}</p>
@@ -40,7 +42,7 @@
           </div>     
       </div>
       <div class="less">
-        <h4>הכי הרבה הגשות לא בזמן</h4>
+        <h4>המרצה בעל הכי הרבה הגשות  בזמן</h4>
         <h4>{{lecStat.minUser.firstName}} {{lecStat.minUser.lastName}}</h4>
         <h6>מחלקה: {{lecStat.minUser.department}} </h6>
         <p>{{lecStat.minCount}}</p>
